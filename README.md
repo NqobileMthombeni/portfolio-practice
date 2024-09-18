@@ -1,4 +1,4 @@
-Link to portfoli:
+Link to portfoli:https://nqobilemthombeni.github.io/portfolio-practice/
 
 ![Breadcrumbsportfolio-practice](images/Screenshot%202024-09-18%20at%2013.57.24.png)
 
