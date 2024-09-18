@@ -330,46 +330,63 @@
   .service-info i {
   font-size: 8rem;
   }
-.projects{
-    background: url(image8.jpg)center no-repeat;
+  .projects {
+    background: url(image8.jpg) center no-repeat;
     background-size: cover;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Ensure items are stacked vertically */
+    height: 80vh;
+    padding: 2rem;
   }
+  
+  
 /* Base styles for larger screens */
 .projects-box {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  place-items: center;
+  place-items: center; /* Center items within grid cells */
   margin: 5rem 0;
   gap: 3rem;
   row-gap: 5rem;
+  max-width: 10px; /* Limit width for centering */
+  width: 10%;
 }
 
-/* For smaller screens, adjust the layout to side by side but keep wrapping */
-@media(max-width: 1285px) {
+
+@media (max-width: 1285px) {
   .projects-box {
     grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns */
   }
 }
 
-/* For very small screens, use flexbox and allow wrapping to maintain side-by-side layout */
-@media(max-width: 895px) {
+@media (max-width: 895px) {
   .projects-box {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping */
+    flex-wrap: wrap;
     justify-content: center; /* Center items */
-    gap: 2rem; /* Adjust gap as needed */
+    gap: 2rem;
   }
 
   .project-card {
-    flex: 1 1 calc(50% - 2rem); /* Adjust width and gap */
+    flex: 1 1 calc(50% - 2rem);
     max-width: none; /* Remove max-width constraint */
   }
 }
 
+.projects-heading {
+  text-align: center; /* Center the heading text */
+  font-size: 4rem; /* Adjust the font size as needed */
+  color: var(--text-color); /* Use your text color */
+  margin-bottom: 2rem; /* Adjust spacing below the heading */
+}
+
+
+
 .project-card{
-    height: 600px;
-    max-width: 450px;
+    height: 430px;
+    max-width: 430px;
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(30px);
     border: 2px solid var(--main-color);
