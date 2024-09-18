@@ -331,8 +331,9 @@
   font-size: 8rem;
   }
 .projects{
-    background: url(image5.jpeg)center no-repeat;
+    background: url(image8.jpg)center no-repeat;
     background-size: cover;
+    
   }
 /* Base styles for larger screens */
 .projects-box {
