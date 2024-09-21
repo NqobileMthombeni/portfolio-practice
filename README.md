@@ -4,6 +4,7 @@ Link to portfoli:https://nqobilemthombeni.github.io/portfolio-practice/
 
 
 
+
 Overview
 check out my portfolio using this link: https://nqobilemthombeni.github.io/portfolio-practice/
 Welcome to my portfolio! This project showcases my skills and projects using a combination of HTML, JavaScript, and CSS. It serves as a comprehensive display of my work, experience, and technical abilities.
