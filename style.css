@@ -21,7 +21,9 @@ html {
 body {
   background: var(--bg-color);
   color: var(--text-color);
+
 }
+
 .header {
   position: fixed;
   top: 0;
@@ -192,6 +194,8 @@ span {
   box-shadow: 0 0 25px var(--main-color);
   background-color: var(--main-color);
 }
+
+
 .btn {
   display: inline-block;
   padding: 1rem 2.8rem;
@@ -386,7 +390,6 @@ line-height: 1.7;
 font-size: 8rem;
 }
 .projects {
-  background: url(image8.jpg) center no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -396,50 +399,43 @@ font-size: 8rem;
   padding: 2rem;
 }
 
-
-/* Base styles for larger screens */
 .projects-box {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-place-items: center; /* Center items within grid cells */
-margin: 5rem 0;
-gap: 3rem;
-row-gap: 5rem;
-max-width: 10px; /* Limit width for centering */
-width: 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center; /* Center items within grid cells */
+  margin: 5rem 0;
+  gap: 3rem;
 }
 
+/* Adjusting maximum width for better centering */
+.projects-box {
+  max-width: 1200px; /* Change to a reasonable maximum width */
+  width: 100%; /* Set width to 100% for better responsiveness */
+}
 
 @media (max-width: 1285px) {
-.projects-box {
-  grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns */
-}
+  .projects-box {
+      grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns */
+  }
 }
 
 @media (max-width: 895px) {
-.projects-box {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center items */
-  gap: 2rem;
-}
-
-.project-card {
-  flex: 1 1 calc(50% - 2rem);
-  max-width: none; /* Remove max-width constraint */
-}
+  .projects-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Center items */
+      gap: 2rem;
+  }
 }
 
 .projects-heading {
-text-align: center; /* Center the heading text */
-font-size: 4rem; /* Adjust the font size as needed */
-color: var(--text-color); /* Use your text color */
-margin-bottom: 2rem; /* Adjust spacing below the heading */
+  text-align: center; /* Center the heading text */
+  font-size: 4rem; /* Adjust the font size as needed */
+  color: var(--text-color); /* Use your text color */
+  margin-bottom: 2rem; /* Adjust spacing below the heading */
 }
 
-
-
-.project-card{
+.project-card {
   height: 440px;
   max-width: 440px;
   background-color: rgba(0, 0, 0, 0.3);
@@ -458,64 +454,66 @@ margin-bottom: 2rem; /* Adjust spacing below the heading */
   box-shadow: 0 0 5px var(--main-color);
   transition: 0.4s ease;
 }
-.project-card:hover{
-  box-shadow: 0 0 25px var(--main-color),
-              0 0 50px var(--main-color);
+
+.project-card:hover {
+  box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color);
   transform: scale(1.02);
 }
-.project-card img{
-  max-width: 18vw ;
+
+.project-card img {
+  max-width: 18vw;
   object-fit: cover;
 }
 
-.project-card h3{
+.project-card h3 {
   font-size: 3rem;
 }
-.project-card p{
+
+.project-card p {
   font-size: 1.6rem;
 }
 
 
-.contact{
-  background-color: var(--bg-color);
+
+.contact {
+  background-color: var(--white);
 }
 
-.contact h2{
+.contact h2 {
   margin-bottom: 3rem;
   color: var(--text-color);
 }
 
-.contact form{
+.contact form {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 5rem; /* Increased gap between items */
   margin: 5rem auto;
   text-align: center;
-
+  padding: 2rem; /* Added padding to the form */
 }
 
-.contact form .input-box{
+.contact form .input-box {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .contact form .input-box input,
-.contact form textarea{
-  width: 100;
+.contact form textarea {
+  width: 100%; /* Make sure to add a unit (e.g., % or px) */
   padding: 2.5rem;
   font-size: 1.8rem;
   color: var(--bg-color);
   border-radius: 2rem;
   border: 2px solid var(--main-color);
-  margin: 1.5rem 0;
-  resize: none;
+  margin: 2rem 0; /* Increased margin for more spacing */
+  resize: none; 
 }
 
-
-.contact form .btn{
-  margin-top: 2rem;
+.contact form .btn {
+  margin-top: 2rem; /* This is fine for button spacing */
 }
 
 .footer{
@@ -549,7 +547,7 @@ margin-bottom: 2rem; /* Adjust spacing below the heading */
 .footer .social a:hover{
   transform:  scale(1.2)translateY(-10px);
   background-color: var(--main-color);
-  color: black;
+  color: white;
   box-shadow: 0 0 25px var(--main-color);
 }
 
@@ -721,6 +719,7 @@ min-width: 42rem;
   --main-color: #f535aa;
 }
 
+
 /* Toggle button styles */
 #mode-toggle {
   position: fixed;
@@ -741,124 +740,439 @@ min-width: 42rem;
   color: var(--main-color);
 }
 
-/* Container for the languages section */
-.languages-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Responsive grid layout */
-  gap: 20px; /* Space between items */
-  padding: 20px; /* Padding around the container */
+
+
+
+
+.project-container {
+  display: flex; /* Use Flexbox for side-by-side layout */
+  justify-content: center; /* Center the project boxes */
+  gap: 20px; /* Space between project boxes */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-/* Container for the languages section */
-.languages-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* More space per item */
-  grid-auto-rows: 150px; /* Fixed height for each block */
-  gap: 20px; /* Space between items */
-  padding: 20px; /* Padding around the container */
-}
 
-/* General styles for icon boxes */
-.language-box {
+
+
+
+
+
+
+.app {
+  min-width: 100vw;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fff; /* Background for icons */
-  border: 1px solid #ddd; /* Light border */
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px;
-  transition: transform 0.3s; /* Smooth hover effect */
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  --text-color: #343a40;
+  --accent-color: #f823f8;
+  --primary-color: #ea00ff;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --transition: 0.3s ease;
+  --background-color: grey;
+  --white: #2f2e2e;
 }
 
-.language-box:hover {
-  transform: scale(1.1); /* Scale effect on hover */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+a {
+  color: var(--primary-color);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-/* Increase icon size */
-.language-box i {
-  font-size: 40px; /* Icon size */
-  color: #ff00cc; /* Icon color */
-  margin-bottom: 10px; /* Space between icon and text */
+a:hover {
+  color: darken(var(--accent-color), 10%);
 }
 
-/* Dark mode styles */
-body.light-mode .languages-container h4 {
-  color: black; /* Normal text color in light mode */
+.tag-list {
+  width: min(60rem, 95vw);
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem) 0;
+  position: relative;
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  overflow: hidden;
 }
 
-body:not(.light-mode) .languages-container h4 {
-  color: rgb(231, 2, 178); /* Text color in dark mode */
+.loop-slider .inner {
+  display: flex;
+  width: fit-content;
+  animation: loop linear infinite;
+  animation-direction: var(--direction, normal);
+  animation-duration: var(--duration, 20s);
 }
 
-/* Default styles (Light Mode) */
-body.light-mode {
-  background-color: #ffffff; /* White background for light mode */
-  color: #000000; /* Dark text for high contrast */
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+  color: var(--text-color);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+  margin-right: clamp(1rem, 2vw, 2rem);
+  transition: color 0.3s ease;
 }
 
-.blogs {
-  background-color: #fce4ec; /* Light pink background for the blog section */
-  color: #000000; /* Dark text color for high contrast */
-  padding: 20px; /* Padding for spacing */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+.tag:hover {
+  color: var(--primary-color);
 }
 
-.blog {
-  background-color: #ffffff; /* White background for individual blog entries */
-  border: 1px solid #e0e0e0; /* Light border for cards */
-  margin: 10px 0; /* Margin for spacing between blog entries */
-  padding: 10px; /* Padding inside blog entries */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Shadow for cards */
+.tag span {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: var(--accent-color);
 }
 
-.blog h3 {
-  color: #ff4081; /* Pink color for blog titles */
+.fade {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+ 
 }
 
-.blog h3 a {
-  text-decoration: none; /* No underline on links */
-  color: #ff4081; /* Pink color for links */
+@keyframes loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.blog h3 a:hover {
-  color: #e91e63; /* Darker pink for hover effect */
+@media (prefers-reduced-motion: reduce) {
+  .loop-slider .inner {
+    animation: none;
+  }
+  
+  .tag {
+    transition: none;
+  }
+}
+#container {
+    text-align: center;
 }
 
-.blog p {
-  color: #333; /* Dark gray color for blog summaries */
+#title {
+    color: #181717;
+    font-size: 20em;
 }
 
-/* Dark Mode Styles */
+#neon-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(255, 0, 212);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgb(247, 0, 255), 0 0 20px rgb(255, 0, 230), 0 0 30px rgb(255, 0, 208), 0 0 40px rgb(255, 0, 225);
+    transition: transform 0.1s, box-shadow 0.1s;
+    transform: translate(-50%, -50%);
+}
+
+
+.tech-container {
+  display: flex;
+  align-items: center; /* Aligns the icon and text vertically */
+  justify-content: flex-start; /* Aligns content to the left */
+  padding: 1rem; /* Adds padding around the container */
+  border-radius: 0.5rem; /* Optional: adds rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+  transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.tech-container {
+  display: flex;
+  align-items: center; /* Aligns the icon and text vertically */
+  justify-content: flex-start; /* Aligns content to the left */
+  padding: 1rem; /* Adds padding around the container */
+  border-radius: 1.5rem; /* Optional: adds rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+  transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.tech-container:hover {
+  transform: scale(1.05); /* Slightly enlarges the container on hover */
+}
+
+.tech-container i {
+  margin-right: 15px; /* Adds space between the icon and the text */
+  font-size: 3rem; /* Increased icon size */
+  color: #ff007f; /* Neon pink color */
+  text-shadow: 0 0 5px rgba(255, 0, 127, 0.7), /* Soft glow */
+               0 0 10px rgba(255, 0, 127, 0.5), /* Medium glow */
+               0 0 15px rgba(255, 0, 127, 0.3); /* Stronger glow */
+  transition: text-shadow 0.2s; /* Smooth transition for hover effect */
+}
+
+.tech-container:hover i {
+  text-shadow: 0 0 10px rgba(255, 0, 127, 1), /* Bright neon pink glow on hover */
+               0 0 20px rgba(255, 0, 127, 0.8), 
+               0 0 30px rgba(255, 0, 127, 0.6);
+}
+
+.tech-title {
+  font-size: 3rem; /* Increased heading size */
+  color: #ff007f; /* Neon pink color */
+  text-shadow: 0 0 5px rgba(255, 0, 127, 0.7), /* Soft glow */
+               0 0 10px rgba(255, 0, 127, 0.5), /* Medium glow */
+               0 0 15px rgba(255, 0, 127, 0.3); /* Stronger glow */
+  transition: text-shadow 0.2s; /* Smooth transition for hover effect */
+}
+
+.tech-container:hover .tech-title {
+  text-shadow: 0 0 10px rgba(255, 0, 127, 1), /* Bright neon pink glow on hover */
+               0 0 20px rgba(255, 0, 127, 0.8), 
+               0 0 30px rgba(255, 0, 127, 0.6);
+}
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.nft {
+  user-select: none;
+  max-width: 300px;
+  margin: 5rem auto;
+  border: 1px solid #ffffff22;
+  background-color: #282c34;
+  background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%);
+  box-shadow: 0 7px 20px 5px #00000088;
+  border-radius: .7rem;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow: hidden;
+  transition: .5s all;
+  font-size: 1.5rem; /* Default font size for .nft */
+
+  hr {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #88888855;
+      margin-top: 0;
+  }
+  
+  ins {
+      text-decoration: none;
+  }
+
+  .main {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      padding: 1rem;
+
+      .tokenImage {
+          border-radius: .5rem;
+          max-width: 100%;
+          height: 250px;
+          object-fit: cover;
+      }
+
+      .description {
+          margin: .5rem 0;
+          color: #a89ec9;
+          font-size: 1.5rem; /* Font size for description */
+      }
+
+      .tokenInfo {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .price {
+              display: flex;
+              align-items: center;
+              color: #ee83e5;
+              font-weight: 700;
+              font-size: 1.5rem; /* Font size for price */
+
+              ins {
+                  margin-left: -.3rem;
+                  margin-right: .5rem;
+              }
+          }
+
+          .duration {
+              display: flex;
+              align-items: center;
+              color: #a89ec9;
+              margin-right: .2rem;
+
+              ins {
+                  margin: .5rem;
+                  margin-bottom: .4rem;
+              }
+          }
+      }
+
+      .creator {
+          display: flex;
+          align-items: center;
+          margin-top: .2rem;
+          margin-bottom: -.3rem;
+
+          ins {
+              color: #a89ec9;
+              text-decoration: none;
+              font-size: 1.5rem; /* Font size for creator text */
+          }
+
+          .wrapper {
+              display: flex;
+              align-items: center;
+              border: 1px solid #ffffff22;
+              padding: .3rem;
+              margin: 0;
+              margin-right: .5rem;
+              border-radius: 100%;
+              box-shadow: inset 0 0 0 4px #000000aa;
+
+              img {
+                  border-radius: 100%;
+                  border: 1px solid #ffffff22;
+                  width: 2.5rem; /* Increased size for the image */
+                  height: 2.5rem; /* Increased size for the image */
+                  object-fit: cover;
+                  margin: 0;
+              }
+          }
+      }
+  }
+
+  ::before {
+      position: fixed;
+      content: "";
+      box-shadow: 0 0 100px 40px #ffffff08;
+      top: -10%;
+      left: -100%;
+      transform: rotate(-45deg);
+      height: 60rem;
+      transition: .7s all;
+  }
+
+  &:hover {
+      border: 1px solid #ffffff44;
+      box-shadow: 0 7px 50px 10px #000000aa;
+      transform: scale(1.015);
+      filter: brightness(1.3);
+
+      ::before {
+          filter: brightness(.5);
+          top: -100%;
+          left: 200%;
+      }
+  }
+}
+
+.bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  h1 {
+      font-size: 25rem; /* Adjust this value for the title */
+      filter: opacity(0.5);
+  }
+}
+
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.theme-toggle .sun-icon,
+.theme-toggle .moon-icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle .sun-icon {
+  fill: yellow; /* Set the fill color to yellow for the sun icon */
+}
+
+.theme-toggle .moon-icon {
+  display: none;
+  fill: #c5bbbb;
+}
+
+/* Light Mode (default) */
+body {
+  background-color: white;
+  color: black;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+
+
+/* Dark Mode */
 body.dark-mode {
-  background-color: #121212; /* Dark background for dark mode */
-  color: #ffffff; /* Light text for high contrast */
+  background-color: black;
+  color: white;
 }
 
-body.dark-mode .blogs {
-  background-color: #1e1e1e; /* Darker background for blog section in dark mode */
+
+
+
+
+/* Theme Toggle for Dark Mode */
+body.dark-mode .theme-toggle {
+  background: black;
+  color: white;
 }
 
-body.dark-mode .blog {
-  background-color: #333333; /* Darker background for individual blog entries */
-  border: 1px solid #444444; /* Slightly lighter border for cards */
+body.dark-mode .theme-toggle .sun-icon {
+  display: none;
 }
 
-body.dark-mode .blog h3 {
-  color: #ff80ab; /* Lighter pink for blog titles in dark mode */
+body.dark-mode .theme-toggle .moon-icon {
+  display: block;
 }
 
-body.dark-mode .blog h3 a {
-  color: #ff80ab; /* Lighter pink for links in dark mode */
+
+
+/* Button styles in Dark Mode */
+body.dark-mode button {
+  background-color: #3d4b5c;
+  color: white;
+  border: 1px solid #ebebeb;
 }
 
-body.dark-mode .blog h3 a:hover {
-  color: #ff5c8a; /* Darker pink for hover effect in dark mode */
+/* Input fields in Dark Mode */
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #333;
+  color: white;
+  border: 1px solid #404040;
 }
 
-body.dark-mode .blog p {
-  color: #e0e0e0; /* Light gray color for blog summaries */
+/* Card styles in Dark Mode */
+body.dark-mode .card,
+body.dark-mode .project-card {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
