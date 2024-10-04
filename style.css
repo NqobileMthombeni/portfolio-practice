@@ -555,7 +555,7 @@ body.dark-mode .services {
   width: 100%; /* Make sure to add a unit (e.g., % or px) */
   padding: 2.5rem;
   font-size: 1.8rem;
-  color: var(--bg-color);
+  color: var(black);
   border-radius: 2rem;
   border: 2px solid var(--main-color);
   margin: 2rem 0; /* Increased margin for more spacing */
