@@ -1090,61 +1090,8 @@ code {
   }
 }
 
-.bg {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  
-  h1 {
-      font-size: 25rem; /* Adjust this value for the title */
-      filter: opacity(0.5);
-  }
-}
 
 
-/* Theme Toggle Button Styles */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: white;
-  border: none;
-  padding: 12px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  z-index: 1000;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-}
-
-.theme-toggle .sun-icon,
-.theme-toggle .moon-icon {
-  width: 24px;
-  height: 24px;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle .sun-icon {
-  fill: yellow; /* Set the fill color to yellow for the sun icon */
-}
-
-.theme-toggle .moon-icon {
-  display: none;
-  fill: #c5bbbb;
-}
-
-/* Light Mode (default) */
-body {
-  background-color: white;
-  color: black;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
 
 /* Theme Toggle Button Styles */
 .theme-toggle {
@@ -1173,8 +1120,19 @@ body {
   transition: all 0.3s ease;
 }
 
+.theme-toggle .sun-icon {
+  fill: yellow; /* Set the fill color to yellow for the sun icon */
+}
+
 .theme-toggle .moon-icon {
   display: none;
+}
+
+/* Light Mode (default) */
+body {
+  background-color: white;
+  color: black;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Dark Mode */
@@ -1230,10 +1188,6 @@ body.dark-mode h6 {
   color: white; /* Ensure all headings are white in dark mode */
 }
 
-/* Links in Dark Mode */
-
-
-
 /* Additional Elements in Dark Mode */
 body.dark-mode .about,
 body.dark-mode .services {
@@ -1258,4 +1212,31 @@ body.dark-mode ::-webkit-scrollbar-thumb {
 /* Ensure Transition for Various Elements */
 body.dark-mode {
   transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 10px; /* Slightly smaller padding */
+    width: 40px; /* Reduce size for smaller screens */
+    height: 40px; /* Maintain circular shape */
+  }
+
+  .theme-toggle .sun-icon,
+  .theme-toggle .moon-icon {
+    width: 20px; /* Smaller icons for small screens */
+    height: 20px; /* Maintain aspect ratio */
+  }
+  
+  body {
+    font-size: 14px; /* Smaller font size for better readability */
+  }
+
+  /* Adjust card styles */
+  body.dark-mode .card,
+  body.dark-mode .project-card {
+    padding: 10px; /* Less padding for smaller cards */
+  }
 }
