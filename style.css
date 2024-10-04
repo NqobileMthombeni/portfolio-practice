@@ -283,7 +283,7 @@ span {
   --main-color: #00d9ff; /* Adjust this to your preferred main color */
   --second-bg-color: #f5f5f5; /* Light background color */
   --bg-color: #ffffff; /* Main background color for light mode */
-  --text-color: #000000; /* Text color for light mode */
+  --text-color: white; /* Text color for light mode */
 }
 
 /* About Section */
@@ -293,7 +293,7 @@ span {
   align-items: center;
   gap: 10rem;
   background: var(--second-bg-color); /* Light background */
-  color: var(--text-color); /* Black text */
+  color: var(black); /* Black text */
 }
 
 .about img {
@@ -434,7 +434,7 @@ body.dark-mode .about {
 
 body.dark-mode .services {
   background: #2d2d2d; /* Dark background for Services section */
-  color: white; /* White text in dark mode */
+  color: black; /* White text in dark mode */
 }
 
 
@@ -920,32 +920,32 @@ a:hover {
 .tech-container i {
   margin-right: 15px; /* Adds space between the icon and the text */
   font-size: 3rem; /* Increased icon size */
-  color: #ff007f; /* Neon pink color */
-  text-shadow: 0 0 5px rgba(255, 0, 127, 0.7), /* Soft glow */
-               0 0 10px rgba(255, 0, 127, 0.5), /* Medium glow */
+  color: #00ffff; /* Neon pink color */
+  text-shadow: 0 0 5px rgba(0, 217, 255, 0.7), /* Soft glow */
+               0 0 10px rgba(0, 225, 255, 0.5), /* Medium glow */
                0 0 15px rgba(255, 0, 127, 0.3); /* Stronger glow */
   transition: text-shadow 0.2s; /* Smooth transition for hover effect */
 }
 
 .tech-container:hover i {
-  text-shadow: 0 0 10px rgba(255, 0, 127, 1), /* Bright neon pink glow on hover */
-               0 0 20px rgba(255, 0, 127, 0.8), 
-               0 0 30px rgba(255, 0, 127, 0.6);
+  text-shadow: 0 0 10px rgb(0, 115, 255), /* Bright neon pink glow on hover */
+               0 0 20px rgba(0, 157, 255, 0.8), 
+               0 0 30px rgba(0, 166, 255, 0.6);
 }
 
 .tech-title {
   font-size: 3rem; /* Increased heading size */
-  color: #ff007f; /* Neon pink color */
-  text-shadow: 0 0 5px rgba(255, 0, 127, 0.7), /* Soft glow */
-               0 0 10px rgba(255, 0, 127, 0.5), /* Medium glow */
-               0 0 15px rgba(255, 0, 127, 0.3); /* Stronger glow */
+  color: #31e6d6; /* Neon pink color */
+  text-shadow: 0 0 5px rgba(28, 255, 255, 0.7), /* Soft glow */
+               0 0 10px rgba(12, 206, 236, 0.5), /* Medium glow */
+               0 0 15px rgba(13, 230, 230, 0.3); /* Stronger glow */
   transition: text-shadow 0.2s; /* Smooth transition for hover effect */
 }
 
 .tech-container:hover .tech-title {
-  text-shadow: 0 0 10px rgba(255, 0, 127, 1), /* Bright neon pink glow on hover */
-               0 0 20px rgba(255, 0, 127, 0.8), 
-               0 0 30px rgba(255, 0, 127, 0.6);
+  text-shadow: 0 0 10px rgb(0, 225, 255), /* Bright neon pink glow on hover */
+               0 0 20px rgba(0, 251, 255, 0.8), 
+               0 0 30px rgba(87, 231, 241, 0.6);
 }
 
 
