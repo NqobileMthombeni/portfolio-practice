@@ -871,89 +871,86 @@ a:hover {
     transition: none;
   }
 }
+/* Existing styles */
 #container {
-    text-align: center;
+  text-align: center;
 }
 
 #title {
-    color: #181717;
-    font-size: 20em;
+  color: #181717;
+  font-size: 20em;
 }
 
 #neon-cursor {
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgb(0, 200, 255);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    box-shadow: 0 0 10px rgb(0, 200, 255), 0 0 20px rgb(0, 221, 255), 0 0 30px rgb(0, 221, 255), 0 0 40px rgb(0, 221, 255);
-    transition: transform 0.1s, box-shadow 0.1s;
-    transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgb(0, 200, 255);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgb(0, 200, 255), 0 0 20px rgb(0, 221, 255), 0 0 30px rgb(0, 221, 255), 0 0 40px rgb(0, 221, 255);
+  transition: transform 0.1s, box-shadow 0.1s;
+  transform: translate(-50%, -50%);
 }
 
+/* Other styles remain unchanged... */
 
 .tech-container {
   display: flex;
-  align-items: center; /* Aligns the icon and text vertically */
-  justify-content: flex-start; /* Aligns content to the left */
-  padding: 1rem; /* Adds padding around the container */
-  border-radius: 0.5rem; /* Optional: adds rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
-  transition: transform 0.2s; /* Smooth transition for hover effect */
-}
-
-.tech-container {
-  display: flex;
-  align-items: center; /* Aligns the icon and text vertically */
-  justify-content: flex-start; /* Aligns content to the left */
-  padding: 1rem; /* Adds padding around the container */
-  border-radius: 1.5rem; /* Optional: adds rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
-  transition: transform 0.2s; /* Smooth transition for hover effect */
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
 .tech-container:hover {
-  transform: scale(1.05); /* Slightly enlarges the container on hover */
+  transform: scale(1.05);
 }
 
 .tech-container i {
-  margin-right: 15px; /* Adds space between the icon and the text */
-  font-size: 3rem; /* Increased icon size */
-  color: #00ffff; /* Neon pink color */
-  text-shadow: 0 0 5px rgba(0, 217, 255, 0.7), /* Soft glow */
-               0 0 10px rgba(0, 225, 255, 0.5), /* Medium glow */
-               0 0 15px rgba(255, 0, 127, 0.3); /* Stronger glow */
-  transition: text-shadow 0.2s; /* Smooth transition for hover effect */
+  margin-right: 15px;
+  font-size: 3rem;
+  color: #00ffff;
+  text-shadow: 0 0 5px rgba(0, 217, 255, 0.7),
+               0 0 10px rgba(0, 225, 255, 0.5),
+               0 0 15px rgba(255, 0, 127, 0.3);
+  transition: text-shadow 0.2s;
 }
 
 .tech-container:hover i {
-  text-shadow: 0 0 10px rgb(0, 115, 255), /* Bright neon pink glow on hover */
-               0 0 20px rgba(0, 157, 255, 0.8), 
+  text-shadow: 0 0 10px rgb(0, 115, 255),
+               0 0 20px rgba(0, 157, 255, 0.8),
                0 0 30px rgba(0, 166, 255, 0.6);
 }
 
 .tech-title {
-  font-size: 3rem; /* Increased heading size */
-  color: #31e6d6; /* Neon pink color */
-  text-shadow: 0 0 5px rgba(28, 255, 255, 0.7), /* Soft glow */
-               0 0 10px rgba(12, 206, 236, 0.5), /* Medium glow */
-               0 0 15px rgba(13, 230, 230, 0.3); /* Stronger glow */
-  transition: text-shadow 0.2s; /* Smooth transition for hover effect */
+  font-size: 3rem;
+  color: #31e6d6;
+  text-shadow: 0 0 5px rgba(28, 255, 255, 0.7),
+               0 0 10px rgba(12, 206, 236, 0.5),
+               0 0 15px rgba(13, 230, 230, 0.3);
+  transition: text-shadow 0.2s;
 }
 
 .tech-container:hover .tech-title {
-  text-shadow: 0 0 10px rgb(0, 225, 255), /* Bright neon pink glow on hover */
-               0 0 20px rgba(0, 251, 255, 0.8), 
+  text-shadow: 0 0 10px rgb(0, 225, 255),
+               0 0 20px rgba(0, 251, 255, 0.8),
                0 0 30px rgba(87, 231, 241, 0.6);
 }
 
-
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+/* Media query to hide the glowing cursor on small screens */
+@media (max-width: 600px) { /* Adjust the max-width as needed */
+  #neon-cursor {
+      display: none; /* Hides the glowing cursor */
+  }
+}
+
 
 .nft {
   user-select: none;
