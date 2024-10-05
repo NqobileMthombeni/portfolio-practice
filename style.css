@@ -397,7 +397,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--main-color); /* Adjust to your main color */
+  background-color: var(--main-color);
   height: 600px;
   border-radius: 3rem;
   border: 5px solid transparent;
@@ -406,7 +406,7 @@ span {
 }
 
 .service-box:hover {
-  background: var(--second-bg-color); /* Light background on hover */
+  background: var(--second-bg-color);
   color: var(--main-color);
   border: 5px solid var(--main-color);
   transform: scale(1.03);
@@ -421,6 +421,32 @@ span {
   align-items: center;
   padding: 5rem 5rem;
 }
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .service-box {
+      height: auto; /* Adjust height to content */
+      padding: 2rem; /* Reduce padding */
+      border-radius: 2rem; /* Reduce border-radius for smaller screens */
+  }
+
+  .service-box .service-info {
+      padding: 2rem 2rem; /* Adjust padding to fit smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .service-box {
+      flex-direction: column; /* Stack content vertically for small screens */
+      padding: 1rem; /* Further reduce padding */
+      border-radius: 1.5rem; /* Smaller border-radius */
+  }
+
+  .service-box .service-info {
+      padding: 1rem; /* Minimal padding for small screens */
+  }
+}
+
 
 .service-info h4 {
   font-size: 2rem;
