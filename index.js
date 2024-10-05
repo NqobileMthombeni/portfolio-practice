@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const body = document.body;
   
-    // Toggle mobile menu
     menuIcon.addEventListener('click', () => {
-      navbar.classList.toggle('open'); // Toggle the 'open' class on the navbar
-    });
+      navbar.classList.toggle('open'); // Toggle the 'open' class to show/hide navbar
+  });
+
+  
   
     // Function to set the active link
     const setActiveLink = (event) => {

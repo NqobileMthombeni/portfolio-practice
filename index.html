@@ -1,44 +1,172 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nqobile Mthombeni - Web Developer</title>
-  <link rel="stylesheet" href="style.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nqobile Mthombeni - Web Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+
+
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 4rem 12% 4rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 3rem;
+            color: var(white);
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .logo span {
+            text-shadow: 0 0 23px var(--main-color);
+        }
+
+        .navbar {
+            display: flex;
+        }
+
+        .navbar a {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-left: 4rem;
+            font-weight: 500;
+            transition: 0.3s ease;
+            border-bottom: 3px solid transparent;
+            text-decoration: none;
+
+            color: #ffffff; /* Set the text color to white */
+            text-decoration: none; /* Remove underline from links */
+            transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+        
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--main-color);
+            border-bottom: 3px solid var(--main-color);
+        }
+
+        #menu-icon {
+            font-size: 3.6rem;
+            color: var(--main-color);
+            display: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1280px) {
+            .header {
+                padding: 14px 2%;
+            }
+            .navbar a {
+                margin-left: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navbar {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                width: 270px;
+                background-color: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem 0;
+                border-radius: 10px;
+            }
+
+            .navbar.active {
+                display: flex;
+                right: 2%;
+            }
+
+            .navbar a {
+                display: block;
+                margin: 1.5rem 0;
+                padding: 0 2rem;
+                font-size: 1.6rem;
+              color: #ffffff; /* Set the text color to white */
+              text-decoration: none; /* Remove underline from links */
+              transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+        }
+    </style>
 </head>
-
 <body>
+    <header class="header">
+        <a href="#home" class="logo">Nqobile<span>Mthombeni</span></a>
+        <i id="menu-icon" class='bx bx-menu'></i>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Skills</a>
+            <a href="projects.html">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-<header class="header">
-  <a href="#home" class="logo">Nqobile<span>Mthombeni</span></a>
-  <i id="menu-icon" class='bx bx-menu'></i>
-  <nav class="navbar">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="projects.html">Projects</a>
-      <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <div id="neon-cursor"></div>
 
-<div id="neon-cursor"></div>
+    <script>
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
 
-<script src="index.js"></script>
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
 
+        // Close menu when clicking a link
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+            });
+        });
 
-<script>
-const menuIcon = document.getElementById('menu-icon');
-const navbar = document.querySelector('.navbar');
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && !menuIcon.contains(e.target)) {
+                navbar.classList.remove('active');
+            }
+        });
+    </script>
 
-menuIcon.addEventListener('click', () => {
-    navbar.classList.toggle('open'); // Toggle navbar visibility
-});
-</script>
+   
+    
+    <script src="index.js"></script>
+
 
   <!-- Home Section -->
   <section class="home" id="home">
@@ -57,7 +185,7 @@ menuIcon.addEventListener('click', () => {
         passionate about creating positive change and delivering exceptional quality.
       </p>
       <div class="social-icons">
-        <a href="https://github.com/yourgithubusername"><i class="bx bxl-github"></i></a>
+        <a href="https://github.com/NqobileMthombeni"><i class="bx bxl-github"></i></a>
         <a href="https://www.linkedin.com/in/nqobile-mthombeni-966b64226"><i class='bx bxl-linkedin-square'></i></a>
       </div>
       <div class="btn-group">
@@ -65,14 +193,16 @@ menuIcon.addEventListener('click', () => {
       </div>
     </div>
     <div class="home-img">
-      <img src="image0.jpeg" alt="Profile Image">
+      <img src="Untitled design-4-2.png" alt="Profile Image">
     </div>
   </section>
+
+
 
   <!-- About Section -->
   <section class="about" id="about">
     <div class="about-img">
-      <img src="image0.jpeg" alt="About Image">
+      <img src=" Untitled design-4-2.png" alt="About Image">
     </div>
     <div class="about-content">
       <h2 class="heading">About <span>Me</span></h2>
@@ -86,28 +216,56 @@ menuIcon.addEventListener('click', () => {
 
   <!-- Services Section -->
   <section class="services" id="services">
-    <h2 class="heading">Services</h2>
+    <h2 class="heading">Skills</h2>
     <div class="services-container">
       <div class="service-box">
         <div class="service-info">
           <i class="bx bxl-figma"></i>
           <h4>UI /UX Design</h4>
-          <p>As a freelance UX/UI designer, I specialize in creating captivating digital experiences that resonate with users and drive business success. From concept to execution, I work closely with clients to understand their vision and translate it into visually stunning and highly functional designs. Whether it's crafting intuitive user interfaces, conducting thorough user research, or optimizing the overall user experience, I bring a combination of creativity and strategic thinking to every project. With a focus on usability, accessibility, and aesthetics, I strive to deliver designs that not only meet client objectives but also exceed user expectations. Let's collaborate to bring your digital ideas to life and create memorable experiences that leave a lasting impression on your audience.</p>
+          <p>As a strategic UI/UX Designer, I create human-centered digital experiences that blend aesthetic excellence with measurable business results. My design process begins with comprehensive user research and journey mapping, informing the creation of detailed wireframes and interactive prototypes in Figma. I excel at translating complex user needs into intuitive interfaces, backed by data from usability testing and analytics.
+            My expertise spans the full design spectrum—from conducting user interviews and creating detailed personas to designing design systems and component libraries that ensure consistency at scale. Using tools like Figma, Adobe Creative Suite, and Principle for advanced micro-interactions, I craft pixel-perfect designs that maintain their integrity across all devices and platforms.
+            Notable achievements include:
+            <ol>
+            <li>Increasing user engagement by 40% through research-driven UX improvements</li>
+            <li>Creating scalable design systems that reduced design-to-development handoff time by 60%</li>
+            <li>Implementing accessibility-first design principles that meet WCAG 2.1 standards</li>
+            <li>Conducting user testing sessions that led to a 25% improvement in task completion rates</li>
+          </ol>
+            </p>
         </div>
       </div>
       <div class="service-box">
         <div class="service-info">
           <i class="bx bx-code"></i>
           <h4>Frontend Developer</h4>
-          <p>As a dedicated freelance Frontend Developer, I specialize in crafting responsive and engaging web experiences that captivate users and drive business growth. With a keen eye for design and a passion for coding, I bring websites to life by implementing clean, efficient, and pixel-perfect frontend solutions. From building interactive user interfaces to optimizing website performance across devices, I leverage the latest technologies and best practices to ensure seamless navigation and exceptional user experience. Whether it's creating dynamic animations, integrating third-party APIs, or enhancing website accessibility, I am committed to delivering high-quality frontend solutions that align with your brand identity and exceed your expectations. Let's collaborate to elevate your online presence and turn your vision into reality. </p>
+          <p>As a passionate Frontend Developer, I transform designs into exceptional web experiences using React, TypeScript, and modern CSS frameworks. My expertise spans building responsive interfaces, optimizing performance, and implementing complex UI animations. I excel at developing reusable component libraries, managing global state with Redux/Context API, and ensuring cross-browser compatibility.
+            By leveraging tools like Webpack and modern build systems, I deliver optimized applications with fast load times and smooth interactions. My commitment to web accessibility (WCAG) and SEO best practices ensures inclusive, discoverable solutions. Through close collaboration with designers and backend teams, I consistently deliver pixel-perfect implementations that exceed client expectations.
+            Let's work together to create intuitive, performant web applications that elevate your brand and delight your users. </p>
         </div>
       </div>
       <div class="service-box">
         <div class="service-info">
           <i class="bx bx-code-curly"></i>
           <h4>Backend development</h4>
-          <p>As a seasoned freelance Backend Developer, I specialize in architecting robust and scalable server-side solutions that power the core functionality of your web applications. With expertise in various programming languages and frameworks such as Node.js, Python, and Ruby on Rails, I design and implement efficient backend systems that handle data processing, authentication, and business logic with precision and reliability. From designing database schemas to developing RESTful APIs and implementing cloud infrastructure, I ensure that your backend is secure, performant, and easily maintainable. Whether it's building custom content management systems, integrating payment gateways, or optimizing database queries for speed, I am dedicated to delivering backend solutions that empower your application to perform at its best. Let's collaborate to bring your ideas to life and create backend solutions that drive your business forward.</p>
-        </div>
+          <p>As a solutions-driven Backend Developer, I architect high-performance distributed systems that scale seamlessly with business growth. My expertise spans Node.js/Express, Python/Django, and modern cloud infrastructure (AWS/GCP), enabling me to build robust APIs and microservices that handle millions of requests efficiently. I excel at designing event-driven architectures and implementing complex business logic while maintaining code quality and system reliability.</p>
+
+          <p>My technical toolkit includes:</p>
+          <ul>
+              <li><strong>Database expertise:</strong> PostgreSQL, MongoDB, Redis for caching, and query optimization</li>
+              <li><strong>API Development:</strong> RESTful and GraphQL APIs with comprehensive documentation</li>
+              <li><strong>Security:</strong> OAuth2.0, JWT implementation, rate limiting, and penetration testing</li>
+              <li><strong>DevOps:</strong> Docker containerization, CI/CD pipelines, and automated testing</li>
+              <li><strong>Message Queues:</strong> RabbitMQ/Kafka for asynchronous processing</li>
+              <li><strong>Monitoring:</strong> ELK stack for logging, Prometheus/Grafana for metrics</li>
+          </ul>
+
+          <p>Key achievements include:</p>
+          <ul>
+              <li>Architected a microservices system that reduced API response times by 60%</li>
+              <li>Implemented caching strategies that cut database load by 40%</li>
+              <li>Designed an automated scaling system handling 10x traffic spikes</li>
+              <li>Reduced infrastructure costs by 35% through optimization and serverless adoption</li>
+          </ul>
       </div>
     </div>
   </section>
@@ -227,14 +385,17 @@ menuIcon.addEventListener('click', () => {
     
     .input-group {
         margin-bottom: 1.5rem;
+        font-size: 14px;
     }
     
     .input-box {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 14px; /* Adjust the size as needed */
+}
+
     
     .form-control {
         width: 100%;
@@ -335,7 +496,7 @@ menuIcon.addEventListener('click', () => {
                 <div class="input-box">
                     <div>
                         <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" class="form-control" placeholder=" Cellnumber (optional) ">
+                        <input type="tel" id="phone" class="form-control" placeholder=" Cellnumber ">
                     </div>
                     <div>
                         <label for="subject" class="form-label">Subject</label>
