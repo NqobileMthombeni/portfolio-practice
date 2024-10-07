@@ -413,22 +413,29 @@ span {
 }
 
 .service-box .service-info {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding: 5rem 5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+  font-size: 1.5rem; /* Adjust this value based on your design */
 }
 
 /* Responsive styles for smaller screens */
+/* Optional: Add media queries for responsiveness */
 @media (max-width: 768px) {
-    .service-box {
-        height: auto; /* Adjust height to content */
-        padding: 2rem; /* Reduce padding */
-        border-radius: 2rem; /* Reduce border-radius for smaller screens */
-    }
+  .service-box .service-info {
+      font-size: 1.25rem; /* Smaller font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .service-box .service-info {
+      font-size: 1rem; /* Even smaller font size for very small screens */
+  }
+}
 
     .service-box .service-info {
         padding: 2rem 2rem; /* Adjust padding to fit smaller screens */
@@ -455,7 +462,7 @@ span {
 }
 
 .service-info p {
-  font-size: 1.1rem;
+  font-size: 3 rem;
   font-weight: 600;
   line-height: 1.7;
 }
