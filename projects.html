@@ -3,221 +3,616 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
-
+    <title>Nqobile Mthombeni - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <style>
-        /* More specific selector */
-        a.home-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #403042; /* Button background color */
-            color: white; /* Text color */
-            text-decoration: none;
-            border-radius: 5px; /* Rounded corners */
-            font-size: 16px;
-            transition: background-color 0.3s ease; /* Smooth hover transition */
+        :root {
+            --primary-color: #60D7E8;
+            --primary-hover: #4AC4D6;
+            --secondary-color: #1E2A3A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --border-color: #374151;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #60D7E8 0%, #4AC4D6 100%);
+            --dark-bg: #0F1419;
+            --card-bg: #1A2332;
         }
 
-        a.home-button:hover {
-            background-color: #a0458f; /* Darker shade on hover */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Add your custom styles here */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000; /* Set background color to black */
-            color: white; /* Set text color to white for contrast */
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .nft-container {
-            display: flex;
-            justify-content: space-around; /* Space between the items */
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            margin: 20px;
+        /* Header */
+        .header {
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .nft {
-            width: 23%; /* Adjust the width as needed */
-            margin: 10px;
-            background-color: #f4f4f4; /* Background color of NFT boxes */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-        }
-
-        .tokenImage {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        .main h2, .main p {
-            margin: 5px 0;
-        }
-
-        .tokenInfo {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        .creator {
-            display: flex;
             align-items: center;
         }
 
-        .creator img {
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .home-button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -5px rgba(96, 215, 232, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Projects Container */
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            height: fit-content;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -5px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-color);
+        }
+
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px; /* Fixed height for all images */
+            background: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img, 
+        .project-card:hover video {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .creator-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .creator-avatar {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            margin-right: 10px;
+            object-fit: cover;
         }
 
+        .creator-details h4 {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .creator-details p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
         footer {
+            background: var(--secondary-color);
+            color: var(--text-primary);
             text-align: center;
-            margin-top: 20px;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
         }
 
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .nft {
-                width: 45%; /* Adjust the width for smaller screens */
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .projects-container {
+                padding: 2rem 1rem;
+            }
+
+            .project-image {
+                height: 200px; /* Smaller height on mobile */
             }
         }
 
         @media (max-width: 480px) {
-            .nft {
-                width: 100%; /* Stack on smaller screens */
+            .hero {
+                padding: 2rem 1rem;
             }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .project-image {
+                height: 180px; /* Even smaller on very small screens */
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        /* Additional fixes for better image consistency */
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.02);
+            pointer-events: none;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
 
-  <a href="index.html" class="home-button">Home</a>
-
-    <!-- NFT Container to hold all the NFT sections -->
-    <div class="nft-container">
-        <!-- First NFT section -->
-        <div class="nft">
-            <div class='main'>
-              <a href="https://stupendous-truffle-c02cb8.netlify.app" target="_blank"> <!-- Link to the first NFT -->
-                <img class='tokenImage' src="image2.png" alt="NFT" />
-              </a>
-              <h2>👟Urbanfootprints</h2>
-              <p class='description'>The Sneaker Web Demo is a mock-up e-commerce platform designed for sneaker enthusiasts. This project aims to showcase a variety of sneaker styles while providing a user-friendly interface for easy navigation. 🛒✨</p>
-              <div class='tokenInfo'>
-                <div class="price">
-                  <ins></ins>
-                </div>
-                <div class="duration">
-                  <ins></ins>
-                </div>
-              </div>
-              <hr />
-              <div class='creator'>
-                <div class='wrapper'>
-                  <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80" alt="Creator" />
-                </div>
-                <p><ins>created by</ins> Nqobile Mthombeni</p>
-              </div>
-            </div> 
+            <a href="index.html" class="home-button">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
         </div>
+    </header>
 
-        <!-- Second NFT section -->
-        <div class="nft">
-            <div class='main'>
-              <a href="https://mockgoojarawebsite.netlify.app" target="_blank"> 
-                <img class='tokenImage' src="img13.png" alt="NFT" />
-              </a>
-              <h2>🌐 Mock Goojara Website</h2>
-              <p class='description'>The Mock Goojara Website is a redesigned version of the popular movie streaming platform, Goojara. This project aimed to enhance user experience through a modern, visually appealing interface that simplifies browsing and discovering movies and TV shows. 🎥✨</p>
-              <div class='tokenInfo'>
-                <div class="price">
-                  <ins></ins>
-                </div>
-                <div class="duration">
-                  <ins></ins>
-                </div>
-              </div>
-              <hr />
-              <div class='creator'>
-                <div class='wrapper'>
-                  <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80" alt="Creator" />
-                </div>
-                <p><ins>created by</ins> Nqobile Mthombeni</p>
-              </div>
-            </div> 
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>My Projects</h1>
+        <p>Explore a collection of my projects, showcasing modern design principles and cutting-edge technologies.</p>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">4+</div>
+                <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Responsive</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">3+</div>
+                <div class="stat-label">Technologies</div>
+            </div>
         </div>
+    </section>
 
-        <!-- Third NFT section -->
-        <div class="nft">
-            <div class='main'>
-              <a href="https://nqobilemthombeni.github.io/moviewebsitecClone/" target="_blank"> 
-                <img class='tokenImage' src="img90.png" alt="NFT" />
-              </a>
-              <h2>NetflixationSix</h2>
-              <p class='description'>A movie trailer showcase website where users can easily browse and view trailers of their favorite films. This project focuses on delivering a visually appealing and intuitive platform for movie enthusiasts. 🎬✨</p>
-              <div class='tokenInfo'>
-                <div class="price">
-                  <ins></ins>
+    <!-- Projects Container -->
+    <main class="projects-container">
+        <h2 class="section-title">Featured Projects</h2>
+        
+        <div class="projects-grid">
+            <!-- Project 1: SneakerKasi -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="Screenshot 2025-07-11 at 01.37.14.png" alt="SneakerKasi E-commerce Platform" />
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://v0-e-commerce-store-design-three.vercel.app/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="duration">
-                  <ins></ins>
-                </div>
-              </div>
-              <hr />
-              <div class='creator'>
-                <div class='wrapper'>
-                  <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80" alt="Creator" />
-                </div>
-                <p><ins>created by</ins> Nqobile Mthombeni</p>
-              </div>
-            </div> 
-        </div>
+                <div class="project-content">
+                    <h3 class="project-title">👟 SneakerHub</h3>
+                    <p class="project-description">
+                        A modern e-commerce platform designed for sneaker enthusiasts. Features include responsive design, 
+                        product catalog, shopping cart functionality, and user-friendly navigation for the ultimate shopping experience.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">E-commerce</span>
+                    </div>
 
-        <!-- Fourth NFT section -->
-        <div class="nft">
-          <div class='main'>
-              <a href="https://github.com/NqobileMthombeni/CS50" target="_blank"> 
-                  <!-- Removed the image -->
-              </a>
-              <h2>🌟 LuckySlots 🌟</h2>
-              <p class='description'>
-                  🎰 Welcome to **LuckSlots**! 🎰<br>
-                   a game I created where you Match symbols to hit the jackpot and experience the thrill of winning big! 💰✨
-                  Spin the reels and see if you can unlock the ultimate prize! 🏆🍀
-              </p>
-      
-              <video width="100%" controls>
-                  <source src="slot.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-              </video>
-      
-              <div class='tokenInfo'>
-                  <div class="price">
-                      <ins></ins>
-                  </div>
-                  <div class="duration">
-                      <ins></ins>
-                  </div>
-              </div>
-              <hr />
-              <div class='creator'>
-                  <div class='wrapper'>
-                      <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80" alt="Creator" />
-                  </div>
-                  <p><ins>created by </ins> Nqobile Mthombeni</p>
-              </div>
-          </div> 
-      </div>
-      
-            </div> 
+                </div>
+            </article>
+
+            <!-- Project 2: Mock Goojara -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="Screenshot 2025-07-11 at 02.41.41.png" alt="" />
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://subtle-tulumba-39f4b.netlify.app/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title"> Sista's Glam Palace 💅🏾 </h3>
+                    <p class="project-description">
+                        Sista’s Glam Palace is a mock booking site where clients can schedule nail and beauty appointments online. 
+                        It’s designed to showcase a smooth and simple booking experience.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive</span>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 3: NetflixationSix -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="img90.png" alt="NetflixationSix Movie Trailers" />
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://nqobilemthombeni.github.io/moviewebsitecClone/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">🎬 NetflixationSix</h3>
+                    <p class="project-description">
+                        A movie trailer showcase platform with intuitive design and seamless video integration. 
+                        Perfect for movie enthusiasts to discover and watch trailers of their favorite films.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Video API</span>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 4: LuckySlots -->
+            <article class="project-card">
+                <div class="project-image">
+                    <video controls>
+                        <source src="slot.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://github.com/NqobileMthombeni/CS50" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">🌟 LuckySlots 🌟</h3>
+                    <p class="project-description">
+                        An interactive slot machine game with engaging animations and sound effects. 
+                        Built as part of CS50 coursework, featuring random number generation and win detection algorithms.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Game Logic</span>
+                        <span class="tech-tag">Algorithms</span>
+                        <span class="tech-tag">CS50</span>
+                    </div>
+
+                </div>
+            </article>
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <p>© 2024 Nqobile Mthombeni - All Rights Reserved</p>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:your.email@example.com" class="social-link" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p>&copy; 2024 Nqobile Mthombeni - All Rights Reserved</p>
+            <p style="margin-top: 0.5rem; color: #64748b;">Crafted with ❤️ and modern web technologies</p>
+        </div>
     </footer>
 </body>
 </html>
