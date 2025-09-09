@@ -1,4 +1,4 @@
-Link to portfoli0 :https://nqobilemthombeni.github.io/portfolio-practice/
+Link to portfolio :https://nqobilemthombeni.github.io/portfolio-practice/
 
 ![portfolio-practice](Screenshot%202024-09-18%20at%2013.57.24.png)
 
