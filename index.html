@@ -1,652 +1,426 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" data-theme="dark"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nqobile Mthombeni - Web Developer</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="description" content="Nqobile Mthombeni - Junior Software Developer specializing in web development, UI/UX design, and modern technologies. Skilled in React, Next.js, Java, and accessibility.">
+    <meta name="keywords" content="junior developer, software developer, web developer, full stack, javascript, python, react, nextjs, java, ui/ux, frontend, backend, accessibility">
+    <title>Nqobile Mthombeni - Junior Developer Portfolio</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-color: #40bfff;
+            --secondary-color: #80dfff;
+            --dark-bg: #121212;
+            --card-bg: #1f1f1f;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --transition: all 0.3s ease-in-out;
+            --light-bg: #f5f5f5;
+            --light-card: #ffffff;
+            --light-text: #1a1a1a;
+            --light-text-secondary: #555555;
+            /* New header background variables for transparency in both modes */
+            --header-bg: rgba(18, 18, 18, 0.95);
         }
 
-
-
-
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 4rem 12% 4rem;
-            background-color: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            width: 100%;
+        [data-theme="light"] {
+            --dark-bg: var(--light-bg);
+            --card-bg: var(--light-card);
+            --text-primary: var(--light-text);
+            --text-secondary: var(--light-text-secondary);
+            --header-bg: rgba(245, 245, 245, 0.95);
         }
 
-        .logo {
-            font-size: 3rem;
-            color: var(white);
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.3s ease;
-            text-decoration: none;
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; font-size:62.5%; }
+        /* Improved font stack for better cross-OS consistency */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; 
+            background: var(--dark-bg); 
+            color: var(--text-primary); 
+            line-height:1.6; 
+            transition: var(--transition); 
         }
 
-        .logo:hover {
-            transform: scale(1.1);
+        /* Header */
+        .header { 
+            position: fixed; 
+            top:0; 
+            left:0; 
+            width:100%; 
+            padding:2rem 9%; 
+            /* Using the new variable */
+            background: var(--header-bg); 
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center; 
+            z-index:1000; 
+            border-bottom:1px solid rgba(64,191,255,0.2);
+            /* Added backdrop filter for modern effect */
+            backdrop-filter: blur(5px);
         }
+        .logo { font-size:2.5rem; color: var(--text-primary); font-weight:700; text-decoration:none;}
+        .logo span { color: var(--primary-color);}
+        .navbar { display:flex; gap:3rem;}
+        .navbar a { font-size:1.6rem; color: var(--text-secondary); text-decoration:none; font-weight:500; position:relative; transition: var(--transition);}
+        .navbar a::after { content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background: var(--primary-color); transition: var(--transition);}
+        .navbar a:hover, .navbar a.active { color: var(--primary-color);}
+        .navbar a:hover::after, .navbar a.active::after { width:100%;}
+        /* Adjusted cursor for consistency */
+        #menu-icon { font-size:3rem; color: var(--primary-color); display:none; cursor:pointer; background:none; border:none;}
 
-        .logo span {
-            text-shadow: 0 0 23px var(--main-color);
-        }
+        /* Buttons */
+        .btn-group { display:flex; gap: 2rem; } /* Added spacing for button group */
+        .btn { display:inline-block; padding:1.2rem 3rem; background: var(--primary-color); color: var(--dark-bg); border-radius:4rem; font-size:1.6rem; font-weight:600; text-decoration:none; transition: var(--transition); border: 2px solid var(--primary-color); cursor:pointer;}
+        .btn:hover { background:transparent; color: var(--primary-color); box-shadow:0 0 20px var(--primary-color);}
 
-        .navbar {
-            display: flex;
-        }
+        /* Home Section */
+        .home { min-height:100vh; display:flex; align-items:center; justify-content:space-between; padding:12rem 9% 4rem; gap:4rem;}
+        .home-content { max-width:60rem; }
+        .home-content h1 { font-size:5rem; font-weight:700; line-height:1.2; margin-bottom:1rem;}
+        .home-content h1 span { color: var(--primary-color);}
+        .home-content h3 { font-size:2.4rem; font-weight:500; margin-bottom:2rem; color: var(--text-secondary);}
+        .home-content p { font-size:1.6rem; color: var(--text-secondary); margin-bottom:2rem; line-height:1.8; }
+        .social-icons { display:flex; gap:2rem; margin:3rem 0;}
+        .social-icons a { display:flex; align-items:center; justify-content:center; width:4.5rem; height:4.5rem; border-radius:50%; font-size:2rem; color: var(--primary-color); border:2px solid var(--primary-color); transition: var(--transition);}
+        .social-icons a:hover { background: var(--primary-color); color: var(--dark-bg); transform: translateY(-5px); box-shadow:0 0 20px var(--primary-color);}
+        .home-img { width:30rem; height:30rem; }
+        .home-img img { width:100%; height:100%; object-fit:cover; border-radius:50%; border:3px solid var(--primary-color); box-shadow:0 0 30px rgba(64,191,255,0.3); animation: float 3s ease-in-out infinite;}
+        @keyframes float { 0%,100% { transform:translateY(0);} 50%{ transform:translateY(-15px);} }
 
-        .navbar a {
-            font-size: 1.8rem;
-            color: var(--text-color);
-            margin-left: 4rem;
-            font-weight: 500;
-            transition: 0.3s ease;
-            border-bottom: 3px solid transparent;
-            text-decoration: none;
+        /* About Section */
+        .about { display:flex; align-items:center; justify-content:space-between; gap:4rem; padding:8rem 9%; background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(18,18,18,0.9) 100%);}
+        [data-theme="light"] .about { background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(245,245,245,0.9) 100%);}
+        .about-img { width:30rem; height:30rem;}
+        .about-img img { width:100%; height:100%; object-fit:cover; border-radius:2rem; border:2px solid var(--primary-color);}
+        .about-content { max-width:60rem;}
+        .heading { font-size:4rem; font-weight:700; margin-bottom:2rem;}
+        .heading span { color: var(--primary-color);}
+        .about-content p { font-size:1.6rem; color: var(--text-secondary); line-height:1.8; margin-bottom:2rem;}
 
-            color: #ffffff; /* Set the text color to white */
-            text-decoration: none; /* Remove underline from links */
-            transition: color 0.3s ease; /* Smooth transition for hover effect */
-}
+        /* Skills Section (Class renamed from .services) */
+        .skills { padding:8rem 9%;}
+        .skills .heading { text-align:center; margin-bottom:5rem;}
+        .skills-container { display:grid; grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); gap:3rem;}
+        .service-box { background: var(--card-bg); border-radius:2rem; padding:3rem; border:2px solid transparent; transition: var(--transition); cursor:pointer;}
+        .service-box:hover { border-color: var(--primary-color); transform: translateY(-10px); box-shadow:0 10px 30px rgba(64,191,255,0.2);}
+        .service-info i { font-size:4rem; color: var(--primary-color); margin-bottom:2rem;}
+        .service-info h4 { font-size:2rem; margin-bottom:1.5rem;}
+        .service-info p { font-size:1.5rem; color: var(--text-secondary); line-height:1.8;}
+
+        /* Tech Stack (Class renamed from .app) */
+        .tech-stack { padding:8rem 9%; background: linear-gradient(135deg, rgba(18,18,18,0.9) 0%, rgba(26,26,26,0.8) 100%);}
+        [data-theme="light"] .tech-stack { background: linear-gradient(135deg, rgba(245,245,245,0.9) 0%, rgba(255,255,255,0.8) 100%);}
+        .tech-container { text-align:center; margin-bottom:4rem;}
+        .tech-container h2 { font-size:3rem; margin-bottom:1rem;}
         
-
-        .navbar a:hover,
-        .navbar a.active {
-            color: var(--main-color);
-            border-bottom: 3px solid var(--main-color);
+        /* Loop Slider Improvements for seamless animation */
+        .tag-list { position:relative; overflow:hidden;}
+        .loop-slider { 
+            display:flex; 
+            gap:2rem; 
+            padding:1rem 0; 
+            width: fit-content; /* Allow content to define width */
+            animation: slideAnimation 20s linear infinite;
         }
-
-        #menu-icon {
-            font-size: 3.6rem;
-            color: var(--main-color);
-            display: none;
-            cursor: pointer;
+        .loop-slider .inner { 
+            display:flex; 
+            gap:2rem;
+            flex-shrink: 0; /* Prevents shrinking */
         }
+        .tag { background: var(--card-bg); padding:1rem 2rem; border-radius:3rem; font-size:1.6rem; white-space:nowrap; border:1px solid var(--primary-color); transition: var(--transition);}
+        .tag:hover { background: var(--primary-color); color: var(--dark-bg); transform: scale(1.05);}
+        .tag span { color: var(--primary-color);}
+        .tag:hover span { color: var(--dark-bg);}
+        /* Animation needs to move 50% since we duplicated the inner content */
+        @keyframes slideAnimation { from{transform:translateX(0);} to{transform:translateX(-100%);} }
 
-        @media (max-width: 1280px) {
-            .header {
-                padding: 14px 2%;
-            }
-            .navbar a {
-                margin-left: 3rem;
-            }
+
+        /* Contact Section */
+        .contact { padding:8rem 9%;}
+        .contact .heading { text-align:center; margin-bottom:5rem;}
+        .contact-form { max-width:80rem; margin:0 auto; background: var(--card-bg); padding:4rem; border-radius:2rem; border:1px solid rgba(64,191,255,0.2);}
+        
+        /* Grid setup for input rows */
+        .input-row { display:grid; grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); gap:2rem; margin-bottom:2rem;}
+        .form-group { display: flex; flex-direction: column; } /* Wrapper for consistency */
+        .form-label { display:block; margin-bottom:0.8rem; font-size:1.4rem; color: var(--text-secondary);}
+        
+        input, textarea { 
+            width:100%; 
+            padding:1rem; 
+            border-radius:1rem; 
+            border:1px solid rgba(64,191,255,0.3); 
+            background: transparent; 
+            color: var(--text-primary); 
+            font-size:1.5rem; 
+            transition: var(--transition); /* Added transition */
         }
+        input:focus, textarea:focus { 
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px var(--primary-color);
+        }
+        textarea { resize:vertical; min-height:15rem;} /* Changed resize to vertical */
+        .contact-btn { display:inline-block; padding:1.2rem 3rem; background: var(--primary-color); color: var(--dark-bg); border-radius:4rem; font-size:1.6rem; font-weight:600; text-decoration:none; border:2px solid var(--primary-color); cursor:pointer;}
+        .contact-btn:hover { background:transparent; color: var(--primary-color); box-shadow:0 0 20px var(--primary-color);}
 
-        @media (max-width: 992px) {
-            #menu-icon {
-                display: block;
-            }
+        /* Footer */
+        .footer { padding:3rem 9%; text-align:center; background: var(--card-bg); border-top:1px solid rgba(64,191,255,0.2);}
+        .footer p { font-size:1.5rem; color: var(--text-secondary);}
 
-            .navbar {
-                display: none;
-                position: absolute;
-                top: 100%;
-                right: -100%;
-                width: 270px;
-                background-color: rgba(0, 0, 0, 0.8);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 2rem 0;
-                border-radius: 10px;
-            }
+        /* Theme Toggle */
+        .theme-toggle { position: fixed; bottom:3rem; right:3rem; width:5rem; height:5rem; background: var(--primary-color); border:none; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition: var(--transition); z-index:1000;}
+        .theme-toggle:hover { transform: scale(1.1) rotate(15deg); box-shadow:0 0 20px var(--primary-color); }
+        .theme-toggle i { font-size: 2.4rem; color: var(--dark-bg); }
 
-            .navbar.active {
-                display: flex;
-                right: 2%;
-            }
-
-            .navbar a {
-                display: block;
-                margin: 1.5rem 0;
-                padding: 0 2rem;
-                font-size: 1.6rem;
-              color: #ffffff; /* Set the text color to white */
-              text-decoration: none; /* Remove underline from links */
-              transition: color 0.3s ease; /* Smooth transition for hover effect */
-}
-
+        /* Responsive */
+        @media(max-width:992px){ 
+            html{font-size:55%;} 
+            .header{padding:2rem 5%;} /* Padding adjusted */
+            .home{flex-direction:column;text-align:center; padding-top: 12rem;} 
+            .home-img{width:25rem;height:25rem; order: -1; margin-bottom: 4rem;} /* Moved image above content on mobile */
+            .btn-group { justify-content: center; } /* Center buttons on mobile */
+            #menu-icon{display:block;} 
+            .navbar{
+                position:absolute;
+                top:100%;
+                left:-100%;
+                width:100%;
+                padding:2rem 0;
+                background:var(--header-bg); /* Use variable for consistency */
+                backdrop-filter: blur(5px);
+                flex-direction:column;
+                align-items:center;
+                transition:0.3s;
+                border-top:1px solid rgba(64,191,255,0.2);
+            } 
+            .navbar.active{left:0;} 
+            .navbar a{display:block;padding:1rem 0;font-size:2rem;} 
+            .about{flex-direction:column; text-align: center;} 
+            .about-img{margin-bottom:3rem;} 
+        }
+        @media(max-width:768px){ 
+            html{font-size:50%;} 
+            .home{padding:8rem 5%;} 
+            .about, .skills, .tech-stack, .contact, .footer { padding-left: 5%; padding-right: 5%; }
+            .skills-container{grid-template-columns:1fr;} 
+        }
+        @media(max-width:480px){
+             .input-row { grid-template-columns: 1fr; } /* Stack contact inputs on very small screens */
+             .btn-group { flex-direction: column; gap: 1rem; }
+             .btn { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <a href="#home" class="logo">Nqobile<span>Mthombeni</span></a>
-        <i id="menu-icon" class='bx bx-menu'></i>
-        <nav class="navbar">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
 
-    <div id="neon-cursor"></div>
+<header class="header">
+    <a href="#home" class="logo">Nqobile<span>Mthombeni</span></a>
+    <button id="menu-icon" class='bx bx-menu' aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation menu"></button>
+    <nav class="navbar" id="navbar-menu">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="projects.html" target="_blank" rel="noopener noreferrer">Projects</a> 
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <script>
-        const menuIcon = document.querySelector('#menu-icon');
-        const navbar = document.querySelector('.navbar');
-
-        menuIcon.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.navbar a').forEach(link => {
-            link.addEventListener('click', () => {
-                navbar.classList.remove('active');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navbar.contains(e.target) && !menuIcon.contains(e.target)) {
-                navbar.classList.remove('active');
-            }
-        });
-    </script>
-
-   
-    
-    <script src="index.js"></script>
-
-
-  <!-- Home Section -->
-  <section class="home" id="home">
+<section class="home" id="home">
     <div class="home-content">
-      <h1>Hi, I'm <span>Nqobile</span></h1>
-      <h3 class="text-animation">I'm a <span></span></h3>
-      <p>
-        As a budding software developer, I am passionate about using technology to make a positive impact on people and the planet.
-        My journey into software development started from a deep desire to solve real-world problems and contribute to a more
-        sustainable and inclusive future. While I am early in my career, I approach every challenge with enthusiasm, a commitment
-        to excellence, and a constant drive for growth.
-      </p>
-      <p>
-        With a foundation in key programming languages such as Java, Python, HTML, CSS, and JavaScript, I am eager to apply my
-        skills to meaningful projects that align with ethical values. I aim to collaborate with like-minded individuals who are
-        passionate about creating positive change and delivering exceptional quality.
-      </p>
-      <div class="social-icons">
-        <a href="https://github.com/NqobileMthombeni"><i class="bx bxl-github"></i></a>
-        <a href="https://www.linkedin.com/in/nqobile-mthombeni-966b64226"><i class='bx bxl-linkedin-square'></i></a>
-      </div>
-      <div class="btn-group">
-        <a href="#contact" class="btn">Contact</a>
-      </div>
+        <h1>Hi, I'm <span>Nqobile</span></h1>
+        <h3>Junior Developer</h3>
+        <p>Motivated Junior Software Developer with hands-on experience building scalable applications and web solutions. Skilled in software testing and agile development, eager to contribute to dynamic development teams.</p>
+        <nav class="social-icons" aria-label="Social Media Links">
+            <a href="https://github.com/NqobileMthombeni" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="bx bxl-github"></i></a>
+            <a href="https://www.linkedin.com/in/nqobile-mthombeni" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin-square'></i></a>
+        </nav>
+        <nav class="btn-group" aria-label="Quick Actions">
+            <a href="#contact" class="btn">Contact Me</a>
+            <a href="projects.html" class="btn" target="_blank" rel="noopener noreferrer">See My Projects</a>
+        </nav>
     </div>
     <div class="home-img">
-      <img src="Untitled design-4-2.png" alt="Profile Image">
+        <img src="High_DA29606-033 2.jpg" alt="Profile Image of Nqobile Mthombeni, Junior Developer">
     </div>
-  </section>
+</section>
 
-
-
-  <!-- About Section -->
-  <section class="about" id="about">
+<section class="about" id="about">
     <div class="about-img">
-      <img src=" Untitled design-4-2.png" alt="About Image">
+        <img src="High_DA29606-033 2.jpg" alt="About section image: Nqobile Mthombeni professional photo">
     </div>
     <div class="about-content">
-      <h2 class="heading">About <span>Me</span></h2>
-      <p>Growing up, I was passionate about gaming, which fueled my curiosity and love for technology. 
-        This passion, combined with my problem-solving skills, led me to pursue a career in software development. 
-        Along the way, I faced doubts and discouragement, but my determination and commitment to my goals kept me focused. 
-        Today, as a software developer, I apply that same dedication to each project I work on. My journey has taught me that with hard work and perseverance, any challenge can be overcome. I'm excited to continue growing in my career and contributing to meaningful projects that solve real-world problems.</p>
-      <a href="https://drive.google.com/file/d/1EgqJmQctrTZijR0g69juyJMpWXTEv3Ym/view?usp=sharing" class="btn" target="_blank">Download My CV</a>
-    </div>
-  </section>
+        <h2 class="heading">About <span>Me</span></h2>
+<p>
+    Hello! I'm Nqobile Mthombeni, a <strong> Motivated Junior Developer</strong>specializing in building scalable, interactive web solutions. I bring hands-on experience across the full-stack, combining core development with proficiency in<strong>software testing (Manual & Selenium)</strong> and UI/UX design. Eager to contribute immediately to a dynamic agile team, I am driven by continuous learning and committed to upholding high industry standards through <strong>inclusive development practices and mentorship.</strong> 
+</p>
+        <a href="NqobileMthombeni_CV.pdf" class="btn" download>Download CV</a> </div>
+</section>
 
-  <!-- Services Section -->
-  <section class="services" id="services">
-    <h2 class="heading">Skills</h2>
-    <div class="services-container">
-      <div class="service-box">
-        <div class="service-info">
-          <i class="bx bxl-figma"></i>
-          <h4>UI /UX Design </h4>
-          <p>
-            I'm a UI/UX Designer focused on creating user-centered digital experiences that drive results. I conduct user research, design wireframes and prototypes in Figma, and create scalable design systems. My work has increased user engagement by 40%, reduced handoff time by 60%, and improved task completion rates by 25%.
+<section class="skills" id="skills">
+    <h2 class="heading">My <span>Skills</span></h2>
+    <div class="skills-container">
+        <div class="service-box">
+            <div class="service-info">
+                <i class='bx bx-code-alt'></i>
+                <h4>Frontend Development</h4>
+                <p> HTML5, CSS3, <strong>JavaScript (ES6+), React, Next.js</strong>, Redux, Tailwind CSS, Responsive Design, Web Performance Optimization.</p>
+            </div>
+        </div>
+        <div class="service-box">
+            <div class="service-info">
+                <i class='bx bx-server'></i>
+                <h4>Backend Development</h4>
+               <p> <strong>Java</strong> (Spring Boot basics), <strong>Flask/Python</strong>, SQL (PostgreSQL, MySQL), API Integration (REST), Git & Version Control.</p>
+            </div>
+        </div>
+        <div class="service-box">
+    <div class="service-info">
+        <i class='bx bx-palette'></i>
+        <h4>Quality Assurance &amp; Design</h4>
+        <p>
+            <strong>Manual &amp; Exploratory Testing</strong>, Automation Tools (<strong>Selenium</strong>), <strong>Figma</strong> (Prototyping & Wireframing), <strong>(A11Y)</strong>, User-centered Design.
         </p>
-        
-        </div>
-      </div>
-      <div class="service-box">
-        <div class="service-info">
-          <i class="bx bx-code"></i>
-          <h4>Frontend Developer</h4>
-          <p>I'm a Frontend Developer skilled in transforming designs into responsive, high-performance web experiences using React, TypeScript, and modern CSS frameworks. I build reusable components, manage global state with Redux/Context API, and ensure cross-browser compatibility. With tools like Webpack, I optimize applications for fast load times and smooth interactions, while adhering to web accessibility (WCAG) and SEO best practices. I collaborate closely with designers and backend teams to deliver pixel-perfect, intuitive web applications that exceed expectations. </p>
-        </div>
-      </div>
-      <div class="service-box">
-        <div class="service-info">
-          <i class="bx bx-code-curly"></i>
-          <h4>Backend development</h4>
-          <p>
-            I'm a Backend Developer skilled in architecting scalable systems using Node.js/Express, Python/Django, and cloud platforms like AWS and GCP. I build robust APIs and microservices that efficiently handle high traffic. My expertise includes event-driven architectures, PostgreSQL, MongoDB, Redis, and securing APIs with OAuth2.0 and JWT. I also implement DevOps practices like Docker and CI/CD pipelines to ensure smooth deployments and system reliability.
-        </p>
-        
-          
-      </div>
     </div>
-  </section>
-
-  <div class="app">
-    <header>
-      <div class="tech-container">
-      <h2>Tech Languages</h2>
-      <i class="fa-solid fa-code"></i>
-   </div>
-      <p> <a href="https://codepen.io/ykadosh/pen/KKezJzz"></a></p>
-    </header>
-    <div class="tag-list">
-      <div class="loop-slider" style="--duration:15951ms; --direction:normal;">
-        <div class="inner">
-          <div class="tag"><span>#</span> JavaScript</div>
-          <div class="tag"><span>#</span> CSS</div>
-          <div class="tag"><span>#</span> HTML</div>
-          <div class="tag"><span>#</span> Next.js</div>
-          <div class="tag"><span>#</span> Python</div>
-          <!-- duplicated content -->
-          <div class="tag"><span>#</span> JavaScript</div>
-          <div class="tag"><span>#</span> CSS</div>
-          <div class="tag"><span>#</span> HTML</div>
-          <div class="tag"><span>#</span> Next.js</div>
-          <div class="tag"><span>#</span> C</div>
-        </div>
-      </div>
-      <div class="loop-slider" style="--duration:19260ms; --direction:reverse;">
-        <div class="inner">
-          <div class="tag"><span>#</span> Python</div>
-          <div class="tag"><span>#</span> Java</div>
-          <div class="tag"><span>#</span> Flask</div>
-          <div class="tag"><span>#</span> C</div>
-          <div class="tag"><span>#</span> HTML</div>
-          <!-- duplicated content -->
-          <div class="tag"><span>#</span> Python</div>
-          <div class="tag"><span>#</span> Java</div>
-          <div class="tag"><span>#</span> Flask</div>
-          <div class="tag"><span>#</span> C</div>
-          <div class="tag"><span>#</span> CSS</div>
-        </div>
-      </div>
-      <div class="loop-slider" style="--duration:10449ms; --direction:normal;">
-        <div class="inner">
-          <div class="tag"><span>#</span> Flask</div>
-          <div class="tag"><span>#</span> Next.js</div>
-          <div class="tag"><span>#</span> React</div>
-          <div class="tag"><span>#</span> Java</div>
-          <div class="tag"><span>#</span> HTML</div>
-          <!-- duplicated content -->
-          <div class="tag"><span>#</span> C</div>
-          <div class="tag"><span>#</span> Java</div>
-          <div class="tag"><span>#</span> React</div>
-          <div class="tag"><span>#</span> SQL</div>
-          <div class="tag"><span>#</span> HTML</div>
-        </div>
-      </div>
-      <div class="loop-slider" style="--duration:16638ms; --direction:reverse;">
-        <div class="inner">
-          <div class="tag"><span>#</span> JavaScript</div>
-          <div class="tag"><span>#</span> HTML</div>
-          <div class="tag"><span>#</span> CSS</div>
-          <div class="tag"><span>#</span> React</div>
-          <div class="tag"><span>#</span> Next.js</div>
-          <!-- duplicated content -->
-          <div class="tag"><span>#</span> Python</div>
-          <div class="tag"><span>#</span> HTML</div>
-          <div class="tag"><span>#</span> CSS</div>
-          <div class="tag"><span>#</span> React</div>
-          <div class="tag"><span>#</span> Next.js</div>
-        </div>
-      </div>
-      <div class="loop-slider" style="--duration:15936ms; --direction:normal;">
-        <div class="inner">
-          <div class="tag"><span>#</span> Next.js</div>
-          <div class="tag"><span>#</span> Python</div>
-          <div class="tag"><span>#</span> Flask</div>
-          <div class="tag"><span>#</span> Java</div>
-          <div class="tag"><span>#</span> CSS</div>
-          <!-- duplicated content -->
-          <div class="tag"><span>#</span> Next.js</div>
-          <div class="tag"><span>#</span> React</div>
-          <div class="tag"><span>#</span> flask</div>
-          <div class="tag"><span>#</span> Python</div>
-          <div class="tag"><span>#</span> SQL</div>
-        </div>
-      </div>
-      <div class="fade"></div>
+</div>
     </div>
-  </div>
+</section>
 
-  <style>
-    .contact {
-        padding: 6rem 2rem;
+<section class="tech-stack" id="tech-stack">
+    <div class="tech-container">
+        <h2>Key <span>Technologies</span></h2>
+        <div class="tag-list" aria-label="A list of key technologies Nqobile Mthombeni is skilled in.">
+            <div class="loop-slider">
+                <div class="inner">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript (ES6+)</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Next.js</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Figma</span>
+                    <span class="tag">UI/UX</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">Azure</span>
+                    <span class="tag">Tailwind CSS</span>
+                </div>
+                <div class="inner" aria-hidden="true">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript (ES6+)</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Next.js</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Figma</span>
+                    <span class="tag">UI/UX</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">Azure</span>
+                    <span class="tag">Tailwind CSS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Me</span></h2>
+    <form action="https://formspree.io/f/movqagjj" method="POST" class="contact-form">
+        <div class="input-row">
+            <div class="form-group">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" name="name" id="name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" placeholder="you@example.com" required>
+            </div>
+        </div>
         
-    }
-    
-    .contact .heading {
-        text-align: center;
-        font-size: 7.5rem;
-        margin-bottom: 3rem;
-        color: #2d2d2d;
-    }
-    
-    .contact .heading span {
-        color: #40dfff;
-    }
-    
-    .contact-form {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .input-group {
-        margin-bottom: 1.5rem;
-        font-size: 14px;
-    }
-    
-    .input-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    font-size: 14px; /* Adjust the size as needed */
-}
+        <div class="form-group" style="margin-bottom: 2rem;">
+            <label for="subject" class="form-label">Subject (Optional)</label>
+            <input type="text" name="subject" id="subject" placeholder="Hiring opportunity or collaboration">
+        </div>
 
-    
-    .form-control {
-        width: 100%;
-        padding: 1rem;
-        border: 2px solid #e1e1e1;
-        border-radius: 8px;
-        font-size: 12rem;
-        transition: all 0.3s ease;
-    }
-    
-    .form-control:focus {
-        border-color: #5fe4e8;
-        box-shadow: 0 0 0 3px rgba(64, 112, 244, 0.1);
-        outline: none;
-    }
-    
-    .form-control::placeholder {
-        color: #6c757d;
-        font-size: large;
-    }
-    
-    textarea.form-control {
-        resize: vertical;
-        min-height: 12px;
-    }
-    
-    .btn-submit {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background: #2ef8ff;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 2rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        width: 100%;
-        font-weight: 600;
-    }
-    
-    .btn-submit:hover {
-        background: #15f3ff;
-        transform: translateY(-2px);
-    }
-    
-    .form-label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: #2d2d2d;
-        font-weight: 500;
-    }
-    
-    .contact-info {
-        text-align: center;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid #e1e1e1;
-       
-    }
-    
-    .contact-info p {
-        color: #6c757d;
-        margin: 0.5rem 0;
-    }
-    
-    .contact-info i {
-        color: #21fffb;
-        margin-right: 0.5rem;
-    }
-    
-    @media (max-width: 768px) {
-        .contact {
-            padding: 4rem 1rem;
-        }
+        <div class="form-group" style="margin-bottom: 3rem;">
+            <label for="message" class="form-label">Message</label>
+            <textarea name="message" id="message" placeholder="I'd love to chat about..." required></textarea>
+        </div>
         
-        .contact-form {
-            padding: 1.5rem;
-        }
-    }
-    </style>
-    
-    <section class="contact" id="contact">
-      <h2 class="heading">Contact <span>Me</span></h2>
-      <form class="contact-form" 
-            action="https://formspree.io/f/movqagjj" 
-            method="POST" 
-            onsubmit="return validateForm(event)">
-          <!-- Hidden input for the thank you page redirect -->
-          <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-          
-          <div class="input-group">
-              <div class="input-box">
-                  <div>
-                      <label for="fullName" class="form-label">Full Name</label>
-                      <input type="text" id="fullName" name="fullName" class="form-control" 
-                             placeholder="Fullnames" 
-                             pattern="^[a-zA-Z\s]{2,50}$" 
-                             maxlength="50"
-                             required>
-                  </div>
-                  <div>
-                      <label for="email" class="form-label">Email</label>
-                      <input type="email" id="email" name="email" class="form-control" 
-                             placeholder="Email Address" 
-                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                             required>
-                  </div>
-              </div>
-              <div class="input-box">
-                  <div>
-                      <label for="phone" class="form-label">Phone Number</label>
-                      <input type="tel" id="phone" name="phone" class="form-control" 
-                             placeholder="Cellnumber"
-                             pattern="^\+?[0-9]{10,15}$">
-                  </div>
-                  <div>
-                      <label for="subject" class="form-label">Subject</label>
-                      <input type="text" id="subject" name="subject" class="form-control" 
-                             placeholder="Subject"
-                             maxlength="100"
-                             required>
-                  </div>
-              </div>
-          </div>
-          <div class="input-group">
-              <label for="message" class="form-label">Message</label>
-              <textarea name="message" id="message" class="form-control" 
-                        rows="6" 
-                        placeholder="Write your message here..." 
-                        maxlength="1000"
-                        required></textarea>
-          </div>
-          <div id="formStatus" class="alert" style="display: none;"></div>
-          <button type="submit" class="btn-submit">
-              Send Message
-          </button>
-      </form>
-  </section>
-  
-  <script>
-  function validateForm(event) {
-      const form = event.target;
-      const formStatus = document.getElementById('formStatus');
-      const submitButton = form.querySelector('button[type="submit"]');
-      
-      // Basic validation
-      const inputs = form.querySelectorAll('input, textarea');
-      for (let input of inputs) {
-          if (!input.validity.valid) {
-              formStatus.textContent = 'Please fill all required fields correctly.';
-              formStatus.className = 'alert alert-danger';
-              formStatus.style.display = 'block';
-              return false;
-          }
-      }
-      
-      // Disable submit button to prevent double submission
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sending...';
-      
-      // Show sending status
-      formStatus.textContent = 'Sending message...';
-      formStatus.className = 'alert alert-info';
-      formStatus.style.display = 'block';
-      
-      // The form will be handled by Formspree
-      return true;
-  }
-  
-  // Add client-side validation
-  document.addEventListener('DOMContentLoaded', function() {
-      const form = document.querySelector('.contact-form');
-      
-      form.addEventListener('input', function(e) {
-          const input = e.target;
-          if (input.validity.valid) {
-              input.classList.remove('invalid');
-          } else {
-              input.classList.add('invalid');
-          }
-      });
-  });
-  </script>
-  
-  <style>
-  .alert {
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 4px;
-  }
-  
-  .alert-success {
-      background-color: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-  }
-  
-  .alert-danger {
-      background-color: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
-  }
-  
-  .alert-info {
-      background-color: #cce5ff;
-      color: #004085;
-      border: 1px solid #b8daff;
-  }
-  
-  .form-control.invalid {
-      border-color: #dc3545;
-  }
-  
-  /* Disable submit button styles */
-  .btn-submit:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-  }
-  </style>
+        <button type="submit" class="contact-btn">Send Message</button>
+    </form>
+</section>
 
-    
+<footer class="footer">
+    <p>&copy; 2024 Nqobile Mthombeni. All rights reserved. Built with ❤️ and Code.</p>
+</footer>
 
-  <!-- Footer Section -->
-  <footer class="footer">
-    <p> &copy; 2024 Nqobile Mthombeni. All rights reserved.</p>
-  </footer>
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-    <circle cx="12" cy="12" r="5" fill="yellow"></circle>
-    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme">
+    <i class='bx bx-moon'></i>
 </button>
 
+<script>
+    // Navbar toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const navbar = document.querySelector('.navbar');
+    menuIcon.addEventListener('click', () => {
+        const isExpanded = menuIcon.getAttribute('aria-expanded') === 'true';
+        navbar.classList.toggle('active');
+        menuIcon.setAttribute('aria-expanded', !isExpanded);
+        menuIcon.setAttribute('aria-label', !isExpanded ? 'Close navigation menu' : 'Open navigation menu');
+    });
 
-<script>document.addEventListener('DOMContentLoaded', () => {
-  const menuIcon = document.getElementById('menu-icon');
-  const navbar = document.querySelector('.navbar');
+    // Scroll active link
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.navbar a');
+    window.addEventListener('scroll', () => {
+        let current = 'home'; // Default to home if at the very top
+        sections.forEach(sec => {
+            const top = sec.offsetTop - 200;
+            // Check if the current scroll position is within the section bounds
+            if(scrollY >= top) current = sec.id;
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const targetId = link.getAttribute('href').slice(1);
+            
+            // IMPROVED: Only apply active class to hash links, ignoring external pages like projects.html
+            if (targetId && link.href.includes('#') && targetId === current) {
+                link.classList.add('active');
+            }
+        });
+    });
 
-  // Toggle mobile menu
-  menuIcon.addEventListener('click', () => {
-      navbar.classList.toggle('open'); // Toggle the 'open' class on the navbar
-  });
+    // Theme toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    themeBtn.addEventListener('click', () => {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
+        
+        // Update the icon based on the *new* state
+        themeBtn.innerHTML = isLight 
+            ? "<i class='bx bx-moon'></i>" // Switch to dark (show moon icon)
+            : "<i class='bx bx-sun'></i>";  // Switch to light (show sun icon)
+        
+        // Update ARIA label (optional but good practice)
+        themeBtn.setAttribute('aria-label', isLight ? 'Switch to light theme' : 'Switch to dark theme');
+    });
 
-  // Function to set the active link
-  const setActiveLink = (event) => {
-      const links = document.querySelectorAll('.navbar a');
-      links.forEach(link => {
-          link.classList.remove('active'); // Remove active class from all links
-      });
-      event.target.classList.add('active'); // Add active class to the clicked link
-  };
+    // Set initial theme icon based on the default HTML attribute
+    document.addEventListener('DOMContentLoaded', () => {
+        const initialTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        if (initialTheme === 'light') {
+             themeBtn.innerHTML = "<i class='bx bx-sun'></i>";
+        } else {
+             themeBtn.innerHTML = "<i class='bx bx-moon'></i>";
+        }
+    });
 
-  // Attach click event to each navbar link
-  const navbarLinks = document.querySelectorAll('.navbar a');
-  navbarLinks.forEach(link => {
-      link.addEventListener('click', setActiveLink);
-  });
-});
 </script>
 
-
-
 </body>
-
 </html>
