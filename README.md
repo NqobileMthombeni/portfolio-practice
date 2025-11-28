@@ -1,19 +1,34 @@
-Link to portfolio :https://nqobilemthombeni.github.io/portfolio-practice/
+# 🚀 Nqobile Mthombeni - Portfolio
 
-![portfolio-practice](Screenshot%202024-09-18%20at%2013.57.24.png)
+**Live Portfolio**: [https://nqobilemthombeni.github.io/portfolio-practice/](https://nqobilemthombeni.github.io/portfolio-practice/)
 
+![Portfolio Preview](assets/images/projects/Screenshot%202024-09-18%20at%2013.57.24.png)
 
+## 🌟 Overview
 
+Welcome to my modern, responsive portfolio! This project showcases my journey as a Junior Software Developer, featuring my skills, projects, and achievements including my CS50x certification from Harvard University.
 
-Overview
-check out my portfolio using this link: https://nqobilemthombeni.github.io/portfolio-practice/
-Welcome to my portfolio! This project showcases my skills and projects using a combination of HTML, JavaScript, and CSS. It serves as a comprehensive display of my work, experience, and technical abilities.
+## 📁 Project Structure
 
-Project Structure
-
-index.html: The main HTML file that contains the structure of the portfolio.
-styles.css: The CSS file responsible for styling the portfolio and ensuring a responsive design.
-scripts.js: The JavaScript file that handles interactivity and dynamic content.
+```
+portfolio-practice/
+├── index.html                 # Main portfolio page
+├── assets/                    # All media assets
+│   ├── certificates/         # PDF certificates
+│   ├── images/               # All images
+│   │   ├── profile/          # Profile photos
+│   │   └── projects/         # Project screenshots
+│   ├── icons/                # SVG icons and graphics
+│   └── videos/               # Video files
+├── pages/                    # Additional HTML pages
+│   ├── projects.html         # Projects showcase page
+│   └── thank_you.html        # Thank you page
+├── css/                      # Stylesheets
+│   └── style.css
+├── js/                       # JavaScript files
+│   └── index.js
+└── README.md                 # This file
+```
 Features
 
 Home Page: A welcoming introduction with a brief overview of who I am and what I do.

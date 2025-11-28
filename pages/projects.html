@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nqobile Mthombeni - Projects Portfolio showcasing web development, CS50 projects, and modern applications.">
+    <title>Nqobile Mthombeni - Projects Portfolio</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #40bfff;
+            --primary-hover: #359ce6;
+            --secondary-color: #80dfff;
+            --dark-bg: #121212;
+            --card-bg: #1f1f1f;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: rgba(64,191,255,0.2);
+            --transition: all 0.3s ease-in-out;
+            --light-bg: #f5f5f5;
+            --light-card: #ffffff;
+            --light-text: #1a1a1a;
+            --light-text-secondary: #555555;
+            --header-bg: rgba(18, 18, 18, 0.95);
+        }
+
+        [data-theme="light"] {
+            --dark-bg: var(--light-bg);
+            --card-bg: var(--light-card);
+            --text-primary: var(--light-text);
+            --text-secondary: var(--light-text-secondary);
+            --header-bg: rgba(245, 245, 245, 0.95);
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; font-size:62.5%; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; 
+            background: var(--dark-bg); 
+            color: var(--text-primary); 
+            line-height:1.6; 
+            transition: var(--transition); 
+        }
+
+        /* Header */
+        .header { 
+            position: fixed; 
+            top:0; 
+            left:0; 
+            width:100%; 
+            padding:2rem 9%; 
+            background: var(--header-bg); 
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center; 
+            z-index:1000; 
+            border-bottom:1px solid rgba(64,191,255,0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .logo { 
+            font-size:2.5rem; 
+            color: var(--text-primary); 
+            font-weight:700; 
+            text-decoration:none;
+        }
+        .logo span { 
+            color: var(--primary-color);
+        }
+
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 3rem;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 4rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+        }
+
+        .home-button:hover {
+            background: transparent;
+            color: var(--primary-color);
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 12rem 9% 4rem;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            max-width: 70rem;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Projects Container */
+        .projects-container {
+            padding: 8rem 9%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 5rem;
+            color: var(--text-primary);
+        }
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+            gap: 4rem;
+            align-items: stretch;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(64,191,255,0.2);
+        }
+
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            height: 25rem;
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img, 
+        .project-card:hover video {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .project-content {
+            padding: 3rem;
+        }
+
+        .project-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1.5rem;
+            background: rgba(64,191,255,0.1);
+            color: var(--primary-color);
+            border-radius: 3rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border: 1px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        .tech-tag:hover {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+        }
+
+        .creator-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .creator-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .creator-details h4 {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .creator-details p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--text-primary);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media(max-width:992px){ 
+            html{font-size:55%;} 
+            .header{padding:2rem 5%;}
+            .hero{padding:12rem 5% 4rem;} 
+        }
+        @media(max-width:768px){ 
+            html{font-size:50%;} 
+            .hero, .projects-container { padding-left: 5%; padding-right: 5%; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .stats { gap: 2rem; }
+        }
+        @media(max-width:480px){
+            .stats { flex-direction: column; gap: 1.5rem; }
+            .project-content { padding: 2rem; }
+            .cs50-projects-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle { 
+            position: fixed; 
+            bottom:3rem; 
+            right:3rem; 
+            width:5rem; 
+            height:5rem; 
+            background: var(--primary-color); 
+            border:none; 
+            border-radius:50%; 
+            cursor:pointer; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            transition: var(--transition); 
+            z-index:1000;
+        }
+        .theme-toggle:hover { 
+            transform: scale(1.1) rotate(15deg); 
+            box-shadow:0 0 20px var(--primary-color); 
+        }
+        .theme-toggle i { 
+            font-size: 2.4rem; 
+            color: var(--dark-bg); 
+        }
+
+        /* CS50 Section Background */
+        .cs50-section {
+            background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(18,18,18,0.9) 100%);
+        }
+        [data-theme="light"] .cs50-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(245,245,245,0.9) 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="../index.html" class="logo">Nqobile <span>Mthombeni</span></a>
+        <a href="../index.html" class="home-button">
+            <i class="fas fa-home"></i>
+            Back to Home
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>My <span>Projects</span></h1>
+        <p>Explore a comprehensive collection of my projects, showcasing modern design principles, cutting-edge technologies, and my journey through CS50x computer science fundamentals.</p>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Responsive</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">Technologies</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Container -->
+    <main class="projects-container">
+        <h2 class="section-title">Featured <span>Projects</span></h2>
+        
+        <div class="projects-grid">
+            <!-- Project 1: SneakerKasi -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="../assets/images/projects/Screenshot 2025-07-11 at 01.37.14.png" alt="SneakerKasi E-commerce Platform" />
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://v0-e-commerce-store-design-three.vercel.app/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">👟 SneakerHub</h3>
+                    <p class="project-description">
+                        A modern e-commerce platform designed for sneaker enthusiasts. Features include responsive design, 
+                        product catalog, shopping cart functionality, and user-friendly navigation for the ultimate shopping experience.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">E-commerce</span>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 2: Mock Goojara -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="../assets/images/projects/Screenshot 2025-07-11 at 02.41.41.png" alt="Sista's Glam Palace booking site" />
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://subtle-tulumba-39f4b.netlify.app/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title"> Sista's Glam Palace 💅🏾 </h3>
+                    <p class="project-description">
+                        Sista’s Glam Palace is a mock booking site where clients can schedule nail and beauty appointments online. 
+                        It’s designed to showcase a smooth and simple booking experience.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive</span>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 3: NetflixationSix -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="../assets/images/projects/img90.png" alt="NetflixationSix Movie Trailers" />
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://nqobilemthombeni.github.io/moviewebsitecClone/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">🎬 NetflixationSix</h3>
+                    <p class="project-description">
+                        A movie trailer showcase platform with intuitive design and seamless video integration. 
+                        Perfect for movie enthusiasts to discover and watch trailers of their favorite films.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Video API</span>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 4: LuckySlots -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="../assets/images/projects/Screenshot 2025-07-11 at 10.18.31.png" alt="LuckySlots CS50 Project" />
+
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://github.com/NqobileMthombeni/CS50" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">� CS50 Final Project: LuckySlots</h3>
+                    <p class="project-description">
+                        My CS50 final project - an interactive slot machine game implementing random number generation, 
+                        win detection algorithms, and game state management. Demonstrates mastery of programming fundamentals 
+                        learned throughout Harvard's CS50 course.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">CS50</span>
+                        <span class="tech-tag">Algorithms</span>
+                        <span class="tech-tag">Game Logic</span>
+                    </div>
+
+                </div>
+            </article>
+        </div>
+
+        <!-- CS50 Section -->
+        <section class="cs50-section" style="margin-top: 4rem;">
+            <h2 class="section-title">🎓 CS50x Projects and Solutions</h2>
+            <div class="cs50-intro" style="text-align: center; max-width: 800px; margin: 0 auto 3rem; padding: 2rem; background: var(--card-bg); border-radius: 20px; border: 1px solid var(--border-color);">
+                <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                    Welcome to my CS50x repository! This collection contains my projects and solutions completed while taking Harvard's CS50 course, 
+                    designed to deepen my understanding of computer science fundamentals. 💻
+                </p>
+                <div class="cs50-highlights" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-brain" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Algorithms</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Sorting & searching implementations</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-database" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Data Structures</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Arrays, linked lists, hash tables</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-code" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Programming</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">C, Python & web development</p>
+                    </div>
+                </div>
+                <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 1rem; padding: 1.5rem; margin: 2rem 0;">
+                    <p style="color: #22c55e; font-size: 1.1rem; margin: 0 0 1rem 0; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                        <i class="fas fa-graduation-cap"></i> CS50x Certificate Earned - November 2024
+                    </p>
+                    <!-- Certificate PDF Preview -->
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <div style="border: 2px solid var(--primary-color); border-radius: 10px; padding: 2rem; background: rgba(64,191,255,0.05); cursor: pointer;" onclick="window.open('../assets/certificates/CS50x.pdf', '_blank')">
+                            <i class="fas fa-file-pdf" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">CS50x Certificate</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Click to view PDF certificate</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="../assets/certificates/CS50x.pdf" target="_blank" class="project-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; font-size: 1rem;">
+                        <i class="fas fa-file-pdf"></i> PDF Certificate
+                    </a>
+                    <a href="../assets/certificates/CERTIFICATE_LANDING_PAGE~BWTS6GZA3KXT.png" target="_blank" class="project-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; font-size: 1rem; background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);">
+                        <i class="fas fa-image"></i> View Image
+                    </a>
+                    <a href="https://github.com/NqobileMthombeni/CS50" target="_blank" class="project-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; font-size: 1rem; background: rgba(64,191,255,0.1); color: var(--primary-color); border: 2px solid var(--primary-color);">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
+                </div>
+            </div>
+
+            <div class="cs50-projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <!-- CS50 Project 1: LuckySlots (Already featured above, enhanced description) -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="../assets/images/projects/Screenshot 2025-07-11 at 10.18.31.png" alt="CS50 LuckySlots Project" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/NqobileMthombeni/CS50" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">🎰 CS50 Final Project: LuckySlots</h3>
+                        <p class="project-description">
+                            My CS50 final project - an interactive slot machine game implementing random number generation, 
+                            win detection algorithms, and game state management. Features engaging animations and demonstrates 
+                            understanding of probability, loops, and conditional logic.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Algorithms</span>
+                            <span class="tech-tag">Game Logic</span>
+                            <span class="tech-tag">CS50</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CS50 Conceptual Project Cards -->
+                <article class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-sort-amount-up" style="font-size: 4rem; color: white; opacity: 0.8;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">📊 Sorting Algorithms</h3>
+                        <p class="project-description">
+                            Implementation of various sorting algorithms including bubble sort, selection sort, merge sort, and quicksort. 
+                            Analyzed time complexity and performance differences through practical coding exercises.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">Algorithms</span>
+                            <span class="tech-tag">Performance</span>
+                            <span class="tech-tag">Big O</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-search" style="font-size: 4rem; color: white; opacity: 0.8;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">🔍 Search Algorithms</h3>
+                        <p class="project-description">
+                            Built efficient search algorithms including linear search, binary search, and hash table implementations. 
+                            Focused on optimizing search operations and understanding data structure trade-offs.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">Hash Tables</span>
+                            <span class="tech-tag">Binary Search</span>
+                            <span class="tech-tag">Optimization</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-link" style="font-size: 4rem; color: white; opacity: 0.8;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">🔗 Data Structures</h3>
+                        <p class="project-description">
+                            Comprehensive exploration of linked lists, stacks, queues, and trees. Built dynamic data structures 
+                            from scratch, managing memory allocation and implementing essential operations.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">Memory Management</span>
+                            <span class="tech-tag">Pointers</span>
+                            <span class="tech-tag">Dynamic Allocation</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-globe" style="font-size: 4rem; color: white; opacity: 0.8;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">🌐 Web Development Basics</h3>
+                        <p class="project-description">
+                            Introduction to web programming with HTML, CSS, and JavaScript. Built responsive web pages 
+                            and learned fundamental web development concepts and best practices.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fab fa-python" style="font-size: 4rem; color: white; opacity: 0.8;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">🐍 Python Problem Sets</h3>
+                        <p class="project-description">
+                            Solved complex programming challenges using Python, covering topics from basic syntax to advanced 
+                            algorithms. Developed clean, efficient code following best practices and proper documentation.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Problem Solving</span>
+                            <span class="tech-tag">Clean Code</span>
+                            <span class="tech-tag">Documentation</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--card-bg); border-radius: 20px; border: 1px solid var(--border-color);">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🚀 Getting Started</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    Feel free to explore the projects and problem sets. You can clone the repository using the following command:
+                </p>
+                <div style="background: var(--dark-bg); padding: 1rem; border-radius: 10px; font-family: 'Courier New', monospace; margin: 1rem 0;">
+                    <code style="color: var(--primary-color);">git clone https://github.com/NqobileMthombeni/CS50.git</code>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                    📜 This repository is open-source and available for learning purposes.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/NqobileMthombeni" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/nqobile-mthombeni-966b64226/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://twitter.com/NqobileMthombeni" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:nqobile.mthombeni@example.com" class="social-link" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p>&copy; 2024 Nqobile Mthombeni - All Rights Reserved</p>
+            <p style="margin-top: 0.5rem; color: #64748b;">Crafted with ❤️ and modern web technologies</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme">
+        <i class='bx bx-moon'></i>
+    </button>
+
+    <script>
+        // Theme toggle functionality
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
+            
+            // Update the icon based on the new state
+            themeBtn.innerHTML = isLight 
+                ? "<i class='bx bx-moon'></i>" // Switch to dark (show moon icon)
+                : "<i class='bx bx-sun'></i>";  // Switch to light (show sun icon)
+            
+            // Update ARIA label
+            themeBtn.setAttribute('aria-label', isLight ? 'Switch to light theme' : 'Switch to dark theme');
+        });
+
+        // Set initial theme icon
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            if (initialTheme === 'light') {
+                themeBtn.innerHTML = "<i class='bx bx-sun'></i>";
+            } else {
+                themeBtn.innerHTML = "<i class='bx bx-moon'></i>";
+            }
+        });
+    </script>
+</body>
+</html>
